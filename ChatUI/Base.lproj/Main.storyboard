@@ -21,6 +21,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="sX7-fC-A7d"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <segue destination="LuB-7E-aiL" kind="presentation" identifier="segue_photo_viewer" id="DFC-1F-3Q3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -120,6 +123,81 @@
             </objects>
             <point key="canvasLocation" x="514" y="519"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="Arf-Rw-1KU">
+            <objects>
+                <viewController id="LuB-7E-aiL" customClass="PhotoViewController" customModule="ChatUI" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vZv-36-8XK"/>
+                        <viewControllerLayoutGuide type="bottom" id="pSH-Jc-UE8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IBX-be-f1k">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MfW-Pw-Urr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZJ-d8-Jbw">
+                                        <rect key="frame" x="3" y="12" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Pqx-vm-C1i"/>
+                                            <constraint firstAttribute="height" constant="40" id="uqD-St-7z9"/>
+                                        </constraints>
+                                        <state key="normal" image="cancle_icon"/>
+                                        <connections>
+                                            <action selector="onClickOfClose:" destination="LuB-7E-aiL" eventType="touchUpInside" id="J0c-Dw-sp9"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-Tj-nJ3">
+                                        <rect key="frame" x="161" y="21" width="92" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="92" id="1WV-Jn-Xgw"/>
+                                            <constraint firstAttribute="height" constant="21" id="o0I-Ia-aEG"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.26666666666666666" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="pZJ-d8-Jbw" firstAttribute="top" secondItem="MfW-Pw-Urr" secondAttribute="top" constant="12" id="AIr-vx-CrB"/>
+                                    <constraint firstItem="dwa-Tj-nJ3" firstAttribute="centerX" secondItem="MfW-Pw-Urr" secondAttribute="centerX" id="Abs-pv-nWs"/>
+                                    <constraint firstItem="dwa-Tj-nJ3" firstAttribute="centerY" secondItem="MfW-Pw-Urr" secondAttribute="centerY" id="F5D-BX-JZV"/>
+                                    <constraint firstAttribute="height" constant="64" id="PvQ-no-sHp"/>
+                                    <constraint firstAttribute="bottom" secondItem="pZJ-d8-Jbw" secondAttribute="bottom" constant="12" id="RjS-js-ynu"/>
+                                    <constraint firstItem="pZJ-d8-Jbw" firstAttribute="leading" secondItem="MfW-Pw-Urr" secondAttribute="leading" constant="3" id="uga-2u-wd4"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-gE-1k7">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gVS-gE-1k7" secondAttribute="trailing" id="0RK-2k-d67"/>
+                            <constraint firstItem="pSH-Jc-UE8" firstAttribute="top" secondItem="gVS-gE-1k7" secondAttribute="bottom" id="7jd-3j-djo"/>
+                            <constraint firstItem="MfW-Pw-Urr" firstAttribute="centerX" secondItem="IBX-be-f1k" secondAttribute="centerX" id="B4L-sF-uwh"/>
+                            <constraint firstItem="gVS-gE-1k7" firstAttribute="leading" secondItem="IBX-be-f1k" secondAttribute="leading" id="ENg-FB-yfc"/>
+                            <constraint firstAttribute="trailing" secondItem="MfW-Pw-Urr" secondAttribute="trailing" id="EYC-QJ-84s"/>
+                            <constraint firstItem="pSH-Jc-UE8" firstAttribute="top" secondItem="gVS-gE-1k7" secondAttribute="bottom" id="Fri-17-KAJ"/>
+                            <constraint firstAttribute="trailing" secondItem="gVS-gE-1k7" secondAttribute="trailing" id="Jp0-wK-Knr"/>
+                            <constraint firstItem="gVS-gE-1k7" firstAttribute="top" secondItem="MfW-Pw-Urr" secondAttribute="bottom" id="KQp-a2-EcH"/>
+                            <constraint firstItem="MfW-Pw-Urr" firstAttribute="leading" secondItem="IBX-be-f1k" secondAttribute="leading" id="XGQ-oT-WRq"/>
+                            <constraint firstItem="MfW-Pw-Urr" firstAttribute="top" secondItem="IBX-be-f1k" secondAttribute="top" id="m1E-JC-vfB"/>
+                            <constraint firstItem="gVS-gE-1k7" firstAttribute="leading" secondItem="IBX-be-f1k" secondAttribute="leading" id="uOp-ZX-dwx"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="imageView" destination="gVS-gE-1k7" id="G4B-vq-Wh3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R3G-W5-6KE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2325" y="-381"/>
+        </scene>
         <!--New Chat-->
         <scene sceneID="Jle-cj-B9w">
             <objects>
@@ -217,6 +295,9 @@
             <point key="canvasLocation" x="1008" y="-381"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="cancle_icon" width="14" height="14"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="YAb-VT-zVx"/>
     </inferredMetricsTieBreakers>

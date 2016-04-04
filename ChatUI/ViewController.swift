@@ -286,6 +286,14 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             if mediaData.isKindOfClass(JSQPhotoMediaItem){
               print("Tapped on image bubble")
                 
+                let photoData = mediaData as! JSQPhotoMediaItem
+                
+                if photoData.isFileUploaded {
+                    
+                    showImageViewer(photoData.imageURL)
+                    
+                }
+                
             }
             else if mediaData.isKindOfClass(JSQVideoMediaItem) {
                 print("Tapped on video bubble")
@@ -543,7 +551,25 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         }
     }
     
+    func showImageViewer(imageURL: NSURL) {
+        
+        let photo = UIImage(contentsOfFile: imageURL.path!)!
+        self.performSegueWithIdentifier("segue_photo_viewer", sender: photo)
+        
+    }
     
+    //MARK: Navigate
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let photo = sender as! UIImage
+        
+        if segue.identifier == "segue_photo_viewer" {
+            let destinationVC = segue.destinationViewController as! PhotoViewController
+            destinationVC.photo = photo
+            
+        }
+        
+    }
 
 }
 

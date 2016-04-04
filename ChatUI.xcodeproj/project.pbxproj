@@ -13,6 +13,7 @@
 		651D6EF21CAE7A4600472B13 /* ChatInfo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651D6EF01CAE7A4600472B13 /* ChatInfo+CoreDataProperties.swift */; };
 		651D6EF31CAE7A4600472B13 /* ChatInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651D6EF11CAE7A4600472B13 /* ChatInfo.swift */; };
 		653889151CB29F2F00CFE12B /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 653889141CB29F2F00CFE12B /* AVKit.framework */; };
+		653889171CB2B50C00CFE12B /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653889161CB2B50B00CFE12B /* PhotoViewController.swift */; };
 		653E8A6E1CB049A100B361B1 /* JSQMessagesCollectionViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = 653E8A6D1CB049A100B361B1 /* JSQMessagesCollectionViewCellIncoming.xib */; };
 		654C35F71C9536C500C4E9CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C35F61C9536C500C4E9CD /* AppDelegate.swift */; };
 		654C35F91C9536C500C4E9CD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 654C35F81C9536C500C4E9CD /* ViewController.swift */; };
@@ -122,6 +123,7 @@
 		651D6EF01CAE7A4600472B13 /* ChatInfo+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ChatInfo+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		651D6EF11CAE7A4600472B13 /* ChatInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInfo.swift; sourceTree = "<group>"; };
 		653889141CB29F2F00CFE12B /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		653889161CB2B50B00CFE12B /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		653E8A6D1CB049A100B361B1 /* JSQMessagesCollectionViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesCollectionViewCellIncoming.xib; sourceTree = "<group>"; };
 		654C35F31C9536C500C4E9CD /* ChatUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		654C35F61C9536C500C4E9CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -348,6 +350,7 @@
 				657825BB1C9A968800F54BFE /* NewChatViewController.swift */,
 				65796ED11CA26ADD001403CB /* TicketsViewController.swift */,
 				654C35F81C9536C500C4E9CD /* ViewController.swift */,
+				653889161CB2B50B00CFE12B /* PhotoViewController.swift */,
 				654C35F61C9536C500C4E9CD /* AppDelegate.swift */,
 				654C35FA1C9536C500C4E9CD /* Main.storyboard */,
 				657BADB81C96FCE50052BDDD /* jsq_messages_sample.m4a */,
@@ -883,6 +886,7 @@
 				65D60FE81CAAC7B700168747 /* JSQLocationMediaItem.m in Sources */,
 				6576A55F1C9936C4004E8FD8 /* ChatAPIManager.swift in Sources */,
 				65D60FE51CAAC7B700168747 /* JSQMessagesCollectionViewFlowLayout.m in Sources */,
+				653889171CB2B50C00CFE12B /* PhotoViewController.swift in Sources */,
 				65D60FE21CAAC7B700168747 /* JSQMessagesTimestampFormatter.m in Sources */,
 				658BB2BD1C9BE55C002D0EA7 /* RMTickets.swift in Sources */,
 				65D60FF21CAAC7B700168747 /* JSQMessagesCollectionViewCellIncoming.m in Sources */,
@@ -1031,7 +1035,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "1f7f2c6c-d090-47db-b046-23a997703f25";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/ChatUI_Swift 2/ChatUI/ChatUI-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/ChatUI-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1076,7 +1080,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "1f7f2c6c-d090-47db-b046-23a997703f25";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/ChatUI_Swift 2/ChatUI/ChatUI-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/ChatUI-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1114,7 +1118,7 @@
 				SWIFT_INCLUDE_PATHS = "\"$(SRCROOT)/ChatUI/ChatUI-Bridging-Header.h\"";
 				"SWIFT_INCLUDE_PATHS[arch=*]" = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/ChatUI_Swift 2/ChatUI/ChatUI-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/ChatUI-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1151,7 +1155,7 @@
 				SWIFT_INCLUDE_PATHS = "\"$(SRCROOT)/ChatUI/ChatUI-Bridging-Header.h\"";
 				"SWIFT_INCLUDE_PATHS[arch=*]" = "";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/ChatUI_Swift 2/ChatUI/ChatUI-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/ChatUI-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Release;
