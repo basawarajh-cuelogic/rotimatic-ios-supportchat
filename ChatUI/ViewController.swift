@@ -19,7 +19,7 @@ let kJSQDemoAvatarDisplayNameSquires = UserName
 let kJSQDemoAvatarDisplayNameSupportTeam = "Support Team"
 
 
-class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ChatAPIManagerDelegate, FileUploadAPIManagerDelegate {
+class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ChatAPIManagerDelegate, FileUploadAPIManagerDelegate, UIGestureRecognizerDelegate {
 
     var messageModel: MessageModel = MessageModel()
     var subject: String = String()
@@ -54,7 +54,8 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         automaticallyScrollsToMostRecentMessage = true
         
-        self.navigationItem.title = subject
+        self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+
         //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "End Chat", style: UIBarButtonItemStyle.Plain, target: self, action: "endChat")
         
         self.senderId = kJSQDemoAvatarIdSquires
@@ -119,11 +120,28 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
  
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = subject
         collectionView!.collectionViewLayout.springinessEnabled = false
+        
+        if ((self.navigationController?.respondsToSelector("interactivePopGestureRecognizer")) != nil) {
+            self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        }
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        if ((self.navigationController?.respondsToSelector("interactivePopGestureRecognizer")) != nil) {
+            self.navigationController?.interactivePopGestureRecognizer?.enabled = true
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        }
+    }
+    
+    //MARK: UIGestureRecognizerDelegate
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return false
     }
     
     
@@ -309,6 +327,32 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             
         }
         
+    }
+    
+    //MARK: Delete Message
+    override func collectionView(collectionView: JSQMessagesCollectionView!, didDeleteMessageAtIndexPath indexPath: NSIndexPath!) {
+        
+        messageModel.messages.removeObjectAtIndex(indexPath.item)
+        
+        self.collectionView?.deleteItemsAtIndexPaths([indexPath])
+        
+        self.collectionView?.reloadData()
+    }
+    
+    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        // Do the custom JSQM stuff
+        super.collectionView(collectionView, shouldShowMenuForItemAtIndexPath: indexPath)
+        // And return true for all message types (we don't want the long press menu disabled for any message types)
+        return true
+    }
+    
+    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+        super.collectionView(collectionView, canPerformAction: action, forItemAtIndexPath: indexPath, withSender: sender)
+        return true
+    }
+    
+    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
+        super.collectionView(collectionView, performAction: action, forItemAtIndexPath: indexPath, withSender: sender)
     }
     
     //MARK: Attachment Menu
@@ -587,6 +631,8 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         return dateString
     }
+    
+    
 
 }
 

@@ -11,6 +11,9 @@ import UIKit
 let Segue_Chat_Details = "goto_chat_vc"
 let Segue_Pre_Chat = "goto_pre_chat"
 
+let closeTicketColor = UIColor(red: 222/255, green: 222/255, blue: 222/255, alpha: 1)
+let openTicketColor = UIColor(red: 164/255, green: 214/255, blue: 68/255, alpha: 1)
+
 class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var tblTickets: UITableView!
@@ -20,6 +23,10 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        tblTickets.rowHeight=UITableViewAutomaticDimension;
+        tblTickets.estimatedRowHeight=200.0;
+
     
     }
     
@@ -62,7 +69,7 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40;
+        return 72 ;
     }
     
     
@@ -70,20 +77,39 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         let cellIdentifier = "TicketCell"
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! RMTicketTableViewCell
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        cell.textLabel?.font = UIFont.systemFontOfSize(15)
         
         let requestDetails: Tickets = allTickets[indexPath.row] as! Tickets
         
-        cell.textLabel?.text = requestDetails.ticketSubject
-        cell.detailTextLabel?.text = requestDetails.ticketDescription
+        cell.lblTicketTitle.text = requestDetails.ticketSubject
+        cell.lblTicketDescription.text = requestDetails.ticketDescription
+        
+        if isTicketOpen(requestDetails.ticketStatus) {
+            cell.statusView.backgroundColor = openTicketColor
+        }
+        else {
+            cell.statusView.backgroundColor = closeTicketColor
+        }
+        
         
         return cell
         
     }
+    
+    func isTicketOpen(status: String) -> Bool {
+        
+        if status == "open" || status == "new" {
+            return true
+        }
+        else {
+            return false
+        }
+        
+    }
+    
     
     //MARK:  UITableViewDelegate
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

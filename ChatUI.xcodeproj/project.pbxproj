@@ -93,6 +93,7 @@
 		65D610021CAAC7B700168747 /* JSQSystemSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D60FD11CAAC7B700168747 /* JSQSystemSoundPlayer.m */; };
 		65D610031CAAC7B700168747 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 65D60FD21CAAC7B700168747 /* LICENSE */; };
 		65D610041CAAC7B700168747 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 65D60FD31CAAC7B700168747 /* README.md */; };
+		65F10C411CB3CCA200981847 /* RMTicketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F10C401CB3CCA200981847 /* RMTicketTableViewCell.swift */; };
 		65FAF1561CA9392B008A4F3F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65FAF1551CA9392B008A4F3F /* Extensions.swift */; };
 		CC05FA961EDD09687333C3DA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CABE110A6E67105DFF79F0D /* Pods.framework */; };
 /* End PBXBuildFile section */
@@ -259,6 +260,7 @@
 		65D60FD11CAAC7B700168747 /* JSQSystemSoundPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSQSystemSoundPlayer.m; sourceTree = "<group>"; };
 		65D60FD21CAAC7B700168747 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		65D60FD31CAAC7B700168747 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65F10C401CB3CCA200981847 /* RMTicketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTicketTableViewCell.swift; sourceTree = "<group>"; };
 		65FAF1551CA9392B008A4F3F /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		F32107F5E0A45BAAB276F1B6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -349,6 +351,7 @@
 				65A9AABA1C95AF6100C9485F /* MessageModel.swift */,
 				657825BB1C9A968800F54BFE /* NewChatViewController.swift */,
 				65796ED11CA26ADD001403CB /* TicketsViewController.swift */,
+				65F10C401CB3CCA200981847 /* RMTicketTableViewCell.swift */,
 				654C35F81C9536C500C4E9CD /* ViewController.swift */,
 				653889161CB2B50B00CFE12B /* PhotoViewController.swift */,
 				654C35F61C9536C500C4E9CD /* AppDelegate.swift */,
@@ -881,6 +884,7 @@
 				65D60FD51CAAC7B700168747 /* JSQSystemSoundPlayer+JSQMessages.m in Sources */,
 				65D60FE31CAAC7B700168747 /* JSQMessagesToolbarButtonFactory.m in Sources */,
 				65D60FE71CAAC7B700168747 /* JSQMessagesCollectionViewLayoutAttributes.m in Sources */,
+				65F10C411CB3CCA200981847 /* RMTicketTableViewCell.swift in Sources */,
 				65D60FDC1CAAC7B700168747 /* JSQMessagesKeyboardController.m in Sources */,
 				651D6EF31CAE7A4600472B13 /* ChatInfo.swift in Sources */,
 				65D60FE81CAAC7B700168747 /* JSQLocationMediaItem.m in Sources */,

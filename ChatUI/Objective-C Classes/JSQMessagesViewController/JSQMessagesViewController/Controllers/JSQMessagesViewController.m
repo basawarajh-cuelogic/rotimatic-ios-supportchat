@@ -141,7 +141,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     self.incomingMediaCellIdentifier = [JSQMessagesCollectionViewCellIncoming mediaCellReuseIdentifier];
 
     // NOTE: let this behavior be opt-in for now
-    // [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
+     [JSQMessagesCollectionViewCell registerMenuAction:@selector(delete:)];
 
     self.showTypingIndicator = NO;
 
