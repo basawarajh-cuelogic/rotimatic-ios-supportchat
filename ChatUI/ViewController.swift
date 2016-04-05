@@ -233,9 +233,8 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         let message = messageModel.messages.objectAtIndex(indexPath.item) as! JSQMessage
         
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        let timeString = formatter.stringFromDate(message.date)
+        
+        let timeString = getDateString(message.date)
 
         let myAttributes1 = [ NSForegroundColorAttributeName: UIColor.darkGrayColor(), NSFontAttributeName: UIFont.boldSystemFontOfSize(8) ]
         
@@ -288,11 +287,11 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
                 
                 let photoData = mediaData as! JSQPhotoMediaItem
                 
-                if photoData.isFileUploaded {
+                /*if photoData.isFileUploaded {
                     
-                    showImageViewer(photoData.imageURL)
-                    
-                }
+                }*/
+                
+                showImageViewer(photoData.imageURL)
                 
             }
             else if mediaData.isKindOfClass(JSQVideoMediaItem) {
@@ -300,11 +299,11 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
                 
                 let videoData = mediaData as! JSQVideoMediaItem
                 
-                if videoData.isFileUploaded {
+                /*if videoData.isFileUploaded {
                     
-                    playVideoFromURL(videoData.fileURL)
-                    
-                }
+                }*/
+                
+                playVideoFromURL(videoData.fileURL)
                 
             }
             
@@ -540,7 +539,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         SVProgressHUD.showErrorWithStatus("Upload Failed")
     }
     
-    
+    //MARK: Open Media file
     func playVideoFromURL(videoPath: NSURL) {
         //filePath may be from the Bundle or from the Saved file Directory, it is just the path for the video
         let player: AVPlayer = AVPlayer(URL: videoPath)
@@ -569,6 +568,24 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             
         }
         
+    }
+    
+    func getDateString(date: NSDate) -> String {
+     
+        let isTodayDate = NSCalendar .currentCalendar().isDateInToday(date)
+        var dateString : String = String()
+        let formatter = NSDateFormatter()
+        
+        if isTodayDate {
+            formatter.dateFormat = "dd h:mm a"
+            dateString = "Today" + " " + formatter.stringFromDate(date)
+        }
+        else {
+            formatter.dateFormat = "MMM dd h:mm a"
+            dateString = " " + formatter.stringFromDate(date)
+        }
+        
+        return dateString
     }
 
 }

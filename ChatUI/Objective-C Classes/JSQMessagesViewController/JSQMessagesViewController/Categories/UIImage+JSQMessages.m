@@ -57,7 +57,7 @@
 
 + (UIImage *)jsq_bubbleRegularImage
 {
-    return [UIImage jsq_bubbleImageFromBundleWithName:@"visitor_box_2"];
+    return [UIImage jsq_bubbleImageFromBundleWithName:@"chat_bubble_2"];
 }
 
 + (UIImage *)jsq_bubbleRegularTaillessImage

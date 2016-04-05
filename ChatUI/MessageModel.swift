@@ -15,8 +15,8 @@ class MessageModel: NSObject {
 
     var messages: NSMutableArray = NSMutableArray()
     var avatars: NSDictionary = NSDictionary()
-    var outgoingBubbleImageData: JSQMessagesBubbleImage = JSQMessagesBubbleImageFactory(bubbleImage: UIImage.jsq_bubbleRegularImage(), capInsets: UIEdgeInsetsMake(30, 0, 0, 0)).outgoingMessagesBubbleImageWithColor(OutGoingBubbleColor)
-    var incomingBubbleImageData: JSQMessagesBubbleImage = JSQMessagesBubbleImageFactory(bubbleImage: UIImage.jsq_bubbleRegularImage(), capInsets: UIEdgeInsetsMake(30, 0, 0, 0)).incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+    var outgoingBubbleImageData: JSQMessagesBubbleImage = JSQMessagesBubbleImageFactory(bubbleImage: UIImage.jsq_bubbleRegularImage(), capInsets: UIEdgeInsetsMake(30, 15, 10, 15)).outgoingMessagesBubbleImageWithColor(OutGoingBubbleColor)
+    var incomingBubbleImageData: JSQMessagesBubbleImage = JSQMessagesBubbleImageFactory(bubbleImage: UIImage.jsq_bubbleRegularImage(), capInsets: UIEdgeInsetsMake(30, 15, 10, 15)).incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
     var users: NSDictionary = NSDictionary()
     
     

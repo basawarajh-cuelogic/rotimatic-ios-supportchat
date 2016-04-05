@@ -72,8 +72,7 @@
     cache.name = @"JSQMessagesBubblesSizeCalculator.cache";
     cache.countLimit = 200;
     return [self initWithCache:cache
-            minimumBubbleWidth: 230
-         usesFixedWidthBubbles:NO];
+            minimumBubbleWidth: [UIImage jsq_bubbleRegularImage].size.width usesFixedWidthBubbles:NO];
 }
 
 #pragma mark - NSObject

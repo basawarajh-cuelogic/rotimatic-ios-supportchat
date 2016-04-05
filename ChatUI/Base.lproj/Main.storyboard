@@ -139,7 +139,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZJ-d8-Jbw">
-                                        <rect key="frame" x="3" y="12" width="40" height="40"/>
+                                        <rect key="frame" x="3" y="23" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Pqx-vm-C1i"/>
                                             <constraint firstAttribute="height" constant="40" id="uqD-St-7z9"/>
@@ -150,7 +150,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwa-Tj-nJ3">
-                                        <rect key="frame" x="161" y="21" width="92" height="21"/>
+                                        <rect key="frame" x="161" y="32" width="92" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="92" id="1WV-Jn-Xgw"/>
                                             <constraint firstAttribute="height" constant="21" id="o0I-Ia-aEG"/>
@@ -162,15 +162,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.24705882352941178" green="0.26666666666666666" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="pZJ-d8-Jbw" firstAttribute="top" secondItem="MfW-Pw-Urr" secondAttribute="top" constant="12" id="AIr-vx-CrB"/>
+                                    <constraint firstItem="pZJ-d8-Jbw" firstAttribute="top" secondItem="MfW-Pw-Urr" secondAttribute="top" constant="23" id="AIr-vx-CrB"/>
                                     <constraint firstItem="dwa-Tj-nJ3" firstAttribute="centerX" secondItem="MfW-Pw-Urr" secondAttribute="centerX" id="Abs-pv-nWs"/>
-                                    <constraint firstItem="dwa-Tj-nJ3" firstAttribute="centerY" secondItem="MfW-Pw-Urr" secondAttribute="centerY" id="F5D-BX-JZV"/>
+                                    <constraint firstItem="dwa-Tj-nJ3" firstAttribute="centerY" secondItem="MfW-Pw-Urr" secondAttribute="centerY" constant="10.5" id="F5D-BX-JZV"/>
                                     <constraint firstAttribute="height" constant="64" id="PvQ-no-sHp"/>
-                                    <constraint firstAttribute="bottom" secondItem="pZJ-d8-Jbw" secondAttribute="bottom" constant="12" id="RjS-js-ynu"/>
+                                    <constraint firstAttribute="bottom" secondItem="pZJ-d8-Jbw" secondAttribute="bottom" constant="1" id="RjS-js-ynu"/>
                                     <constraint firstItem="pZJ-d8-Jbw" firstAttribute="leading" secondItem="MfW-Pw-Urr" secondAttribute="leading" constant="3" id="uga-2u-wd4"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-gE-1k7">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gVS-gE-1k7">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                             </imageView>
                         </subviews>
