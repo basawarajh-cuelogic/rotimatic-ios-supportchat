@@ -117,6 +117,16 @@ class RMTickets: NSObject {
         
     }
     
+    func addCommentForTicket(ticketId: String, comment: String, completionBlock: (error: NSError?) -> Void) {
+        
+        ticketRequest.addComment(comment, forRequestId: ticketId) { (comment, error) -> Void in
+            
+            completionBlock(error: error)
+            
+        }
+        
+    }
+    
     //MARK: Parse Tickets
     
     func parseTickets(tickets: Array<ZDKRequest>) -> NSArray {

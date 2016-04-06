@@ -3,6 +3,7 @@
     <entity name="ChatInfo" representedClassName="ChatInfo" syncable="YES">
         <attribute name="agentId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="commentSync" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="displayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="eventType" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="isUploaded" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -17,6 +18,6 @@
         <attribute name="vendorId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ChatInfo" positionX="-63" positionY="-18" width="128" height="255"/>
+        <element name="ChatInfo" positionX="-63" positionY="-18" width="128" height="270"/>
     </elements>
 </model>

@@ -44,6 +44,7 @@ class ChatInfoDataManager: NSObject {
                 chatInfo.timeStamp = chatData.timeStamp
                 chatInfo.msgType = chatData.msgType
                 chatInfo.thumbnailURL = chatData.thumbnailURL
+                chatInfo.commentSync = chatData.commentSync!
                 
                 if chatData.msgType == MessageType.Video.rawValue || chatData.msgType == MessageType.Image.rawValue {
                     chatInfo.isUploaded = chatData.isUploaded!
@@ -83,10 +84,12 @@ class ChatInfoDataManager: NSObject {
         
     }
     
-    //MARK: Fetch All Chat Method
-    func fetchAllChatMessages(ticketId: String, completionHandler: (chatInfoData: NSMutableArray, error: NSError?) -> Void) {
+    //MARK: Fetch All Chat For Comment Sync Status Method
+    func fetchAllChatMessages(commentSync: Bool, completionHandler: (chatInfoData: NSMutableArray, error: NSError?) -> Void) {
         
         let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
+        request.predicate = NSPredicate(format: "commentSync == %@", NSNumber(bool: commentSync))
+
         let chatMessages: NSMutableArray = NSMutableArray()
         
         CoreDataManager.shared.executeFetchRequest(request) { (results, error) -> Void in
@@ -139,31 +142,34 @@ class ChatInfoDataManager: NSObject {
     
     
     //MARK: Update Comment Status For Chat Message Method
-    func updateChatCommentStatusInfo(chatData: ChatMessage, messageId: String, failureHandler: (messageId: String?, error: NSError?) -> Void) {
+    func updateChatCommentStatus(messages: NSMutableArray, failureHandler: (messageId: String?, error: NSError?) -> Void) {
         
-        let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
-        request.predicate = NSPredicate(format: "msgId = %@", messageId)
-        
-        CoreDataManager.shared.executeFetchRequest(request) { (results, error) -> Void  in
-            print(results)
+        for message in messages {
             
-            if error == nil {
+            let chatInfo = message as! ChatInfo
+            
+            let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
+            request.predicate = NSPredicate(format: "msgId = %@", chatInfo.msgId!)
+            
+            CoreDataManager.shared.executeFetchRequest(request) { (results, error) -> Void  in
+                print(results)
                 
-                if results?.count > 0 {
+                if error == nil {
                     
-                    let chatInfo : ChatInfo = results?[0] as! ChatInfo
-                    
-                    chatInfo.msgId = chatData.msgId
-                    chatInfo.msgBody = chatData.msgBody
-                    chatInfo.isUploaded = chatData.isUploaded!
-                    
-                    CoreDataManager.shared.save({ (error) -> Void in
-                        if error != nil {
-                            failureHandler(messageId: nil, error: error)
-                        }else {
-                            failureHandler(messageId: chatInfo.msgId, error: nil)
-                        }
-                    })
+                    if results?.count > 0 {
+                        
+                        let chatInfo : ChatInfo = results?[0] as! ChatInfo
+                        chatInfo.commentSync = true
+                        
+                        CoreDataManager.shared.save({ (error) -> Void in
+                            if error != nil {
+                                failureHandler(messageId: nil, error: error)
+                            }else {
+                                failureHandler(messageId: chatInfo.msgId, error: nil)
+                            }
+                        })
+                        
+                    }
                     
                 }
                 
@@ -171,6 +177,34 @@ class ChatInfoDataManager: NSObject {
             
         }
         
+    }
+    
+    func updateChatWithCommentSyncStatus(status: Bool) {
+        
+        // Create Entity Description
+        let entityDescription = NSEntityDescription.entityForName(CHAT_INFO_ENTITY, inManagedObjectContext: CoreDataManager.shared.managedObjectContext)
+        
+        // Initialize Batch Update Request
+        let batchUpdateRequest = NSBatchUpdateRequest(entity: entityDescription!)
+        batchUpdateRequest.predicate = NSPredicate(format: "commentSync = %@", false)
+        
+        // Configure Batch Update Request
+        batchUpdateRequest.resultType = .UpdatedObjectIDsResultType
+        batchUpdateRequest.propertiesToUpdate = ["commentSync":status]
+        
+        do {
+            // Execute Batch Request
+            let batchUpdateResult = try CoreDataManager.shared.managedObjectContext.executeRequest(batchUpdateRequest) as! NSBatchUpdateResult
+            
+            // Extract Object IDs
+            let objectIDs = batchUpdateResult.result as! [NSManagedObjectID]
+            
+            
+            
+        } catch {
+            let updateError = error as NSError
+            print("\(updateError), \(updateError.userInfo)")
+        }
     }
 
     

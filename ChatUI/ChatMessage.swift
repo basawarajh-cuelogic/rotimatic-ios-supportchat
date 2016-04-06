@@ -78,5 +78,6 @@ class ChatMessage: NSObject {
     var mediaFileURL: String?
     var isUploaded: Bool?
     var thumbnailURL: String?
+    var commentSync: Bool?
     
 }

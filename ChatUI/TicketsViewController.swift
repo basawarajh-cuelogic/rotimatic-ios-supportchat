@@ -58,11 +58,10 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
             }
             
-            
         }
         
-        
     }
+    
     //MARK:  UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allTickets.count

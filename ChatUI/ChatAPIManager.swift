@@ -273,7 +273,7 @@ class ChatAPIManager: NSObject {
                 chatMessage.eventType = info.type.rawValue
                 chatMessage.timeStamp = NSDate()
                 chatMessage.avatarUrl = ""
-                
+                chatMessage.commentSync = false
                 if info.message.isUrl() {
                     
                     chatMessage.isUploaded = true

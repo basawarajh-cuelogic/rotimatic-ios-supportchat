@@ -127,6 +127,8 @@
     _date = nil;
     _text = nil;
     _media = nil;
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"NotificationIdentifier" object:nil];
 }
 
 - (NSUInteger)messageHash

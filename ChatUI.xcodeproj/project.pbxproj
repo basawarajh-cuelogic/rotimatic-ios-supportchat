@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65096D041CB5358400B3B7A8 /* ChatTranscriptManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65096D031CB5358400B3B7A8 /* ChatTranscriptManager.swift */; };
 		651D6EE51CAE440D00472B13 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651D6EE41CAE440D00472B13 /* Reachability.swift */; };
 		651D6EE71CAE448800472B13 /* NetworkAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651D6EE61CAE448800472B13 /* NetworkAvailability.swift */; };
 		651D6EEB1CAE68D000472B13 /* ChatMediaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651D6EEA1CAE68D000472B13 /* ChatMediaData.swift */; };
@@ -118,6 +119,7 @@
 /* Begin PBXFileReference section */
 		1CABE110A6E67105DFF79F0D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A85BFC4FAFB2675A4323B1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		65096D031CB5358400B3B7A8 /* ChatTranscriptManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTranscriptManager.swift; sourceTree = "<group>"; };
 		651D6EE41CAE440D00472B13 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		651D6EE61CAE448800472B13 /* NetworkAvailability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkAvailability.swift; sourceTree = "<group>"; };
 		651D6EEA1CAE68D000472B13 /* ChatMediaData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatMediaData.swift; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 				6576A55E1C9936C4004E8FD8 /* ChatAPIManager.swift */,
 				651D6EEA1CAE68D000472B13 /* ChatMediaData.swift */,
 				65D5BF761C9FD76200FC3355 /* FileUploadAPIManager.swift */,
+				65096D031CB5358400B3B7A8 /* ChatTranscriptManager.swift */,
 				6576A5601C996CF4004E8FD8 /* ChatMessage.swift */,
 				654C380F1C95432800C4E9CD /* Message.swift */,
 				65A9AABA1C95AF6100C9485F /* MessageModel.swift */,
@@ -910,6 +913,7 @@
 				65D60FF61CAAC7B700168747 /* JSQMessagesComposerTextView.m in Sources */,
 				65D60FF81CAAC7B700168747 /* JSQMessagesLabel.m in Sources */,
 				658BB2BB1C9BE55C002D0EA7 /* RMHelpCenter.swift in Sources */,
+				65096D041CB5358400B3B7A8 /* ChatTranscriptManager.swift in Sources */,
 				65A9AABB1C95AF6100C9485F /* MessageModel.swift in Sources */,
 				654C35FF1C9536C500C4E9CD /* ChatUI.xcdatamodeld in Sources */,
 				65D60FDA1CAAC7B700168747 /* UIImage+JSQMessages.m in Sources */,

@@ -44,6 +44,8 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         createUploadFolder()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "sendTranscript", name: kDidEnterBackground, object: nil)
+        
     }
     
     
@@ -53,7 +55,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         self.navigationController?.interactivePopGestureRecognizer?.enabled = false
 
-        //self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "End Chat", style: UIBarButtonItemStyle.Plain, target: self, action: "endChat")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "cancle_icon.png"), style: UIBarButtonItemStyle.Plain, target: self, action: "onClickOfBack")
         
         self.senderId = kJSQDemoAvatarIdSquires
         self.senderDisplayName = kJSQDemoAvatarDisplayNameSquires
@@ -134,6 +136,19 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             self.navigationController?.interactivePopGestureRecognizer?.enabled = true
             self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
         }
+        
+    }
+
+    
+    
+    func onClickOfBack() {
+        ChatTranscriptManager().sendChatTranscriptToComment(self.ticketId)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
+    func sendTranscript() {
+        ChatTranscriptManager().sendChatTranscriptToComment(self.ticketId)
     }
     
     //MARK: UIGestureRecognizerDelegate
@@ -435,6 +450,8 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         messageInfo.eventType = EventType.VisitorMessage.rawValue
         messageInfo.timeStamp = messageDate
         messageInfo.isUploaded = false
+        messageInfo.commentSync = false
+
         
         ChatInfoDataManager.sharedInstance.insertChatInfo(messageInfo, failureHandler: { (error) -> Void in
             
@@ -474,6 +491,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             messageInfo.timeStamp = messageDate
             messageInfo.isUploaded = false
             messageInfo.thumbnailURL = fileThumnailURL.path
+            messageInfo.commentSync = false
             
             ChatInfoDataManager.sharedInstance.insertChatInfo(messageInfo, failureHandler: { (error) -> Void in
                 

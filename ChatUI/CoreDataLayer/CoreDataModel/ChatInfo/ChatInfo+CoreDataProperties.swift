@@ -28,5 +28,6 @@ extension ChatInfo {
     @NSManaged var vendorId: NSNumber?
     @NSManaged var isUploaded: Bool
     @NSManaged var thumbnailURL: String?
+    @NSManaged var commentSync: Bool
 
 }
