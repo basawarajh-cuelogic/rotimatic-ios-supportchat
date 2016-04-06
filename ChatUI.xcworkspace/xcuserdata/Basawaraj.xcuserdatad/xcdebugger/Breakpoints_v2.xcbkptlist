@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
             landmarkName = "didPressSendButton(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "collectionView(_:numberOfItemsInSection:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "530"
-            endingLineNumber = "530"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "connectionStatus(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "536"
-            endingLineNumber = "536"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "connectionStatus(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-            timestampString = "481297767.442267"
+            timestampString = "481630841.941332"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "fetchChatMessages(_:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -212,11 +212,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "398"
-            endingLineNumber = "398"
+            startingLineNumber = "393"
+            endingLineNumber = "393"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -244,11 +244,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "569"
+            endingLineNumber = "569"
             landmarkName = "progressUpload(_:totalBytesExpectedToSend:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "577"
-            endingLineNumber = "577"
+            startingLineNumber = "572"
+            endingLineNumber = "572"
             landmarkName = "uploadSuccess(_:)"
             landmarkType = "5">
             <Locations>
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
             landmarkName = "uploadFailed()"
             landmarkType = "5">
             <Locations>
@@ -356,11 +356,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ChatAPIManager.swift"
-            timestampString = "481464259.275158"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "309"
+            endingLineNumber = "309"
             landmarkName = "fetchMessages(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -372,11 +372,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ChatAPIManager.swift"
-            timestampString = "481464259.275158"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "fetchMessages(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -420,11 +420,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "481437044.022637"
+            timestampString = "481610867.838585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "328"
-            endingLineNumber = "328"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "-uploadSuccess:"
             landmarkType = "5">
          </BreakpointContent>
@@ -436,11 +436,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "481437044.022637"
+            timestampString = "481610867.838585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "340"
+            endingLineNumber = "340"
             landmarkName = "-uploadFailed"
             landmarkType = "5">
          </BreakpointContent>
@@ -452,11 +452,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "481437044.022637"
+            timestampString = "481610867.838585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -468,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "481437044.022637"
+            timestampString = "481610867.838585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "-progressUpload:totalBytesExpectedToSend:"
             landmarkType = "5">
          </BreakpointContent>
@@ -500,11 +500,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "566"
-            endingLineNumber = "566"
+            startingLineNumber = "561"
+            endingLineNumber = "561"
             landmarkName = "sessionTimeout()"
             landmarkType = "5">
             <Locations>
@@ -548,11 +548,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "160"
-            endingLineNumber = "160"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "didPressSendButton(_:withMessageText:senderId:senderDisplayName:date:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -564,11 +564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "553"
-            endingLineNumber = "553"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
             landmarkName = "agentEventData(_:)"
             landmarkType = "5">
             <Locations>
@@ -628,11 +628,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "362"
-            endingLineNumber = "362"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "-uploadFailed"
             landmarkType = "5">
          </BreakpointContent>
@@ -644,11 +644,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -660,11 +660,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "collectionView(_:messageDataForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -676,11 +676,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "-progressUpload:totalBytesExpectedToSend:"
             landmarkType = "5">
             <Locations>
@@ -724,11 +724,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481390674.281484"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -740,11 +740,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "342"
-            endingLineNumber = "342"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "-progressUpload:totalBytesExpectedToSend:"
             landmarkType = "5">
             <Locations>
@@ -788,11 +788,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405239.863"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -804,11 +804,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -820,11 +820,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "-progressUpload:totalBytesExpectedToSend:"
             landmarkType = "5">
          </BreakpointContent>
@@ -836,11 +836,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481390674.281484"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -852,11 +852,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481390674.281484"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -900,11 +900,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "341"
-            endingLineNumber = "341"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
             landmarkName = "-progressUpload:totalBytesExpectedToSend:"
             landmarkType = "5">
          </BreakpointContent>
@@ -916,140 +916,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "collectionView(_:messageDataForItemAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatUI/ChatAPIManager.swift"
-            timestampString = "481297461.086116"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "insertChatMessagesInfoToDB(_:completionHandler:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatUI/ChatAPIManager.swift"
-            timestampString = "481297461.086116"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "237"
-            endingLineNumber = "237"
-            landmarkName = "insertChatMessagesInfoToDB(_:completionHandler:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatUI.ChatAPIManager.insertChatMessagesInfoToDB (ChatUI.ChatAPIManager)(__ObjC.NSArray) -&gt; __ObjC.NSArray"
-                  moduleName = "ChatUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Basawaraj/Downloads/ChatUI_Swift%202/ChatUI/ChatAPIManager.swift"
-                  timestampString = "481296860.731632"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "235"
-                  endingLineNumber = "235"
-                  offsetFromSymbolStart = "1720">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatUI.ChatAPIManager.(insertChatMessagesInfoToDB (ChatUI.ChatAPIManager) -&gt; (__ObjC.NSArray) -&gt; __ObjC.NSArray).(closure #2)"
-                  moduleName = "ChatUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Basawaraj/Downloads/ChatUI_Swift%202/ChatUI/ChatAPIManager.swift"
-                  timestampString = "481296860.731876"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "236"
-                  endingLineNumber = "236"
-                  offsetFromSymbolStart = "40">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-            timestampString = "481296742.891462"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "insertChatInfo(_:failureHandler:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatUI.ChatInfoDataManager.insertChatInfo (ChatUI.ChatInfoDataManager)(ChatUI.ChatMessage, failureHandler : (chatInfo : ChatUI.ChatInfo, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "ChatUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Basawaraj/Downloads/ChatUI_Swift%202/ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-                  timestampString = "481296860.732992"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "31"
-                  endingLineNumber = "31"
-                  offsetFromSymbolStart = "712">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ChatUI.ChatInfoDataManager.(insertChatInfo (ChatUI.ChatInfoDataManager) -&gt; (ChatUI.ChatMessage, failureHandler : (chatInfo : ChatUI.ChatInfo, error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "ChatUI"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Basawaraj/Downloads/ChatUI_Swift%202/ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-                  timestampString = "481296860.733182"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "32"
-                  endingLineNumber = "32"
-                  offsetFromSymbolStart = "44">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-            timestampString = "481296760.708012"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "insertChatInfo(_:failureHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1066,54 +938,6 @@
             startingLineNumber = "100"
             endingLineNumber = "100"
             landmarkName = "chatEvent(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-            timestampString = "481297699.78812"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "insertChatInfo(_:failureHandler:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-            timestampString = "481297614.125319"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "insertChatInfo(_:failureHandler:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-            timestampString = "481297659.477517"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "insertChatInfo(_:failureHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1140,11 +964,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "collectionView(_:avatarImageDataForItemAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1172,11 +996,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "273"
+            endingLineNumber = "273"
             landmarkName = "-onTapOfProgress:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1268,11 +1092,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
             landmarkName = "-uploadVideoFile"
             landmarkType = "5">
          </BreakpointContent>
@@ -1284,11 +1108,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "222"
-            endingLineNumber = "222"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "-mediaView"
             landmarkType = "5">
             <Locations>
@@ -1332,11 +1156,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "223"
-            endingLineNumber = "223"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1348,11 +1172,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1444,11 +1268,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "-uploadVideoFile"
             landmarkType = "5">
          </BreakpointContent>
@@ -1460,11 +1284,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405053.9889"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1476,11 +1300,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQVideoMediaItem.m"
-            timestampString = "481405222.349233"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1508,11 +1332,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "481435371.299261"
+            timestampString = "481610867.838585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "-setMediauploadStatus:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1524,11 +1348,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "481435372.131232"
+            timestampString = "481610867.838585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-setMediauploadStatus:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1540,11 +1364,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "481435374.189081"
+            timestampString = "481610867.838585"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
             landmarkName = "-setMediauploadStatus:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1588,11 +1412,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481555969.459431"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
+            startingLineNumber = "583"
+            endingLineNumber = "583"
             landmarkName = "playVideoFromURL(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1604,11 +1428,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481540250.111059"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "307"
-            endingLineNumber = "307"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
             landmarkName = "collectionView(_:didTapMessageBubbleAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1620,11 +1444,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481539709.057324"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "customizeUI()"
             landmarkType = "5">
          </BreakpointContent>
@@ -1652,11 +1476,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/ViewController.swift"
-            timestampString = "481551062.109194"
+            timestampString = "481630138.078337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
             landmarkName = "collectionView(_:didDeleteMessageAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -1706,6 +1530,166 @@
             startingLineNumber = "630"
             endingLineNumber = "630"
             landmarkName = "-collectionView:performAction:forItemAtIndexPath:withSender:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/ViewController.swift"
+            timestampString = "481630138.078337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
+            landmarkName = "collectionView(_:performAction:forItemAtIndexPath:withSender:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
+            timestampString = "481630841.941332"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "updateChatInfo(_:mediaMsg:failureHandler:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
+            timestampString = "481630841.941332"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
+            landmarkName = "deleteChatMessage(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
+            timestampString = "481630841.941332"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "deleteChatMessage(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
+            timestampString = "481630841.941332"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "deleteChatInfo(_:failureHandler:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChatUI.ChatInfoDataManager.deleteChatInfo (ChatUI.ChatInfoDataManager)(ChatUI.ChatInfo, failureHandler : (error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "ChatUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
+                  timestampString = "481615577.171889"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "125"
+                  endingLineNumber = "125"
+                  offsetFromSymbolStart = "280">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ChatUI.ChatInfoDataManager.(deleteChatInfo (ChatUI.ChatInfoDataManager) -&gt; (ChatUI.ChatInfo, failureHandler : (error : Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "ChatUI"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
+                  timestampString = "481615577.172194"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/ViewController.swift"
+            timestampString = "481630138.078337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "628"
+            endingLineNumber = "628"
+            landmarkName = "getDateString(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQMessage.m"
+            timestampString = "481630079.927554"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "-methodOfReceivedNotification:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ChatUI/ChatAPIManager.swift"
+            timestampString = "481630425.598237"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "insertChatMessagesInfoToDB(_:completionHandler:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

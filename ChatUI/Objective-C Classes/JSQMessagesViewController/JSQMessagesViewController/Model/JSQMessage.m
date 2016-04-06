@@ -22,6 +22,7 @@
 @interface JSQMessage ()
 
 - (instancetype)initWithSenderId:(NSString *)senderId
+                       messageId:(NSString *)messageId
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                          isMedia:(BOOL)isMedia;
@@ -35,23 +36,26 @@
 #pragma mark - Initialization
 
 + (instancetype)messageWithSenderId:(NSString *)senderId
+                          messageId:(NSString *)messageId
                         displayName:(NSString *)displayName
                                text:(NSString *)text
 {
     return [[self alloc] initWithSenderId:senderId
+                                messageId:messageId
                         senderDisplayName:displayName
                                      date:[NSDate date]
                                      text:text];
 }
 
 - (instancetype)initWithSenderId:(NSString *)senderId
+                       messageId:(NSString *)messageId
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                             text:(NSString *)text
 {
     NSParameterAssert(text != nil);
 
-    self = [self initWithSenderId:senderId senderDisplayName:senderDisplayName date:date isMedia:NO];
+    self = [self initWithSenderId:senderId messageId:messageId senderDisplayName:senderDisplayName date:date isMedia:NO];
     if (self) {
         _text = [text copy];
     }
@@ -59,23 +63,26 @@
 }
 
 + (instancetype)messageWithSenderId:(NSString *)senderId
+                          messageId:(NSString *)messageId
                         displayName:(NSString *)displayName
                               media:(id<JSQMessageMediaData>)media
 {
     return [[self alloc] initWithSenderId:senderId
+                                messageId:(NSString *)messageId
                         senderDisplayName:displayName
                                      date:[NSDate date]
                                     media:media];
 }
 
 - (instancetype)initWithSenderId:(NSString *)senderId
+                       messageId:(NSString *)messageId
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                            media:(id<JSQMessageMediaData>)media
 {
     NSParameterAssert(media != nil);
 
-    self = [self initWithSenderId:senderId senderDisplayName:senderDisplayName date:date isMedia:YES];
+    self = [self initWithSenderId:senderId messageId:messageId senderDisplayName:senderDisplayName date:date isMedia:YES];
     if (self) {
         _media = media;
     }
@@ -83,6 +90,7 @@
 }
 
 - (instancetype)initWithSenderId:(NSString *)senderId
+                       messageId:(NSString *)messageId
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                          isMedia:(BOOL)isMedia
@@ -90,6 +98,7 @@
     NSParameterAssert(senderId != nil);
     NSParameterAssert(senderDisplayName != nil);
     NSParameterAssert(date != nil);
+    NSParameterAssert(messageId != nil);
 
     self = [super init];
     if (self) {
@@ -97,7 +106,11 @@
         _senderDisplayName = [senderDisplayName copy];
         _date = [date copy];
         _isMediaMessage = isMedia;
+        _messageId = messageId;
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(methodOfReceivedNotification:) name:@"NotificationIdentifier" object:nil];
+
     return self;
 }
 
@@ -155,8 +168,8 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"<%@: senderId=%@, senderDisplayName=%@, date=%@, isMediaMessage=%@, text=%@, media=%@>",
-            [self class], self.senderId, self.senderDisplayName, self.date, @(self.isMediaMessage), self.text, self.media];
+    return [NSString stringWithFormat:@"<%@: senderId=%@, messageId=%@, senderDisplayName=%@, date=%@, isMediaMessage=%@, text=%@, media=%@>",
+            [self class], self.senderId, self.messageId, self.senderDisplayName, self.date, @(self.isMediaMessage), self.text, self.media];
 }
 
 - (id)debugQuickLookObject
@@ -171,6 +184,7 @@
     self = [super init];
     if (self) {
         _senderId = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(senderId))];
+        _messageId = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(messageId))];
         _senderDisplayName = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(senderDisplayName))];
         _date = [aDecoder decodeObjectForKey:NSStringFromSelector(@selector(date))];
         _isMediaMessage = [aDecoder decodeBoolForKey:NSStringFromSelector(@selector(isMediaMessage))];
@@ -183,6 +197,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.senderId forKey:NSStringFromSelector(@selector(senderId))];
+    [aCoder encodeObject:self.messageId forKey:NSStringFromSelector(@selector(messageId))];
     [aCoder encodeObject:self.senderDisplayName forKey:NSStringFromSelector(@selector(senderDisplayName))];
     [aCoder encodeObject:self.date forKey:NSStringFromSelector(@selector(date))];
     [aCoder encodeBool:self.isMediaMessage forKey:NSStringFromSelector(@selector(isMediaMessage))];
@@ -199,15 +214,24 @@
 {
     if (self.isMediaMessage) {
         return [[[self class] allocWithZone:zone] initWithSenderId:self.senderId
+                                                         messageId:self.messageId
                                                  senderDisplayName:self.senderDisplayName
                                                               date:self.date
                                                              media:self.media];
     }
 
     return [[[self class] allocWithZone:zone] initWithSenderId:self.senderId
+                                                     messageId:self.messageId
                                              senderDisplayName:self.senderDisplayName
                                                           date:self.date
                                                           text:self.text];
+}
+
+- (void) methodOfReceivedNotification: (NSNotification *) notification {
+    
+    NSString *messageId = [notification object];
+    self.messageId = messageId;
+    
 }
 
 @end

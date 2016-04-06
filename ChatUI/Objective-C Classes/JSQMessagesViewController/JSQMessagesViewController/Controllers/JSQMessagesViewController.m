@@ -627,7 +627,7 @@ static void * kJSQMessagesKeyValueObservingContext = &kJSQMessagesKeyValueObserv
     else if (action == @selector(delete:)) {
         [collectionView.dataSource collectionView:collectionView didDeleteMessageAtIndexPath:indexPath];
 
-        [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+        //[collectionView deleteItemsAtIndexPaths:@[indexPath]];
         [collectionView.collectionViewLayout invalidateLayout];
     }
 }

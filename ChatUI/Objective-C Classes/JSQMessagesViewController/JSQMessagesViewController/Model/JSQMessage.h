@@ -35,6 +35,12 @@
 @property (copy, nonatomic, readonly) NSString *senderId;
 
 /**
+ *  Returns the string identifier that uniquely identifies message.
+ */
+@property (copy, nonatomic) NSString *messageId;
+
+
+/**
  *  Returns the display name for the user who sent the message. This value does not have to be unique.
  */
 @property (copy, nonatomic, readonly) NSString *senderDisplayName;
@@ -79,6 +85,7 @@
  *  @return An initialized `JSQMessage` object if successful, `nil` otherwise.
  */
 + (instancetype)messageWithSenderId:(NSString *)senderId
+                          messageId:(NSString *)messageId
                         displayName:(NSString *)displayName
                                text:(NSString *)text;
 
@@ -95,6 +102,7 @@
  *  @return An initialized `JSQMessage` object if successful, `nil` otherwise.
  */
 - (instancetype)initWithSenderId:(NSString *)senderId
+                       messageId:(NSString *)messageId
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                             text:(NSString *)text;
@@ -111,6 +119,7 @@
  *  @return An initialized `JSQMessage` object if successful, `nil` otherwise.
  */
 + (instancetype)messageWithSenderId:(NSString *)senderId
+                          messageId:(NSString *)messageId
                         displayName:(NSString *)displayName
                               media:(id<JSQMessageMediaData>)media;
 
@@ -127,6 +136,7 @@
  *  @return An initialized `JSQMessage` object if successful, `nil` otherwise.
  */
 - (instancetype)initWithSenderId:(NSString *)senderId
+                       messageId:(NSString *)messageId
                senderDisplayName:(NSString *)senderDisplayName
                             date:(NSDate *)date
                            media:(id<JSQMessageMediaData>)media;

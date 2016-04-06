@@ -13,19 +13,19 @@ class ChatMediaData: NSObject {
 
     static var sharedInstance = ChatMediaData()
     
-    func addPhotoMediaMessage(photoURL: String, senderId: String, displayName: String, date: NSDate, isfileUploaded: Bool) -> JSQMessage {
+    func addPhotoMediaMessage(photoURL: String, senderId: String, messageId: String, displayName: String, date: NSDate, isfileUploaded: Bool) -> JSQMessage {
         
         let photoItem: JSQPhotoMediaItem = JSQPhotoMediaItem(URL: NSURL(string: photoURL), fileUploaded: isfileUploaded)
-        let photoMessage: JSQMessage = JSQMessage(senderId: senderId, senderDisplayName: displayName, date: date, media: photoItem)
+        let photoMessage: JSQMessage = JSQMessage(senderId: senderId, messageId: messageId, senderDisplayName: displayName, date: date, media: photoItem)
 
         
         return photoMessage
     }
     
-    func addVideoMediaMessage(videoURL: NSURL, videoThumbnailURL: NSURL, senderId: String, displayName: String,  date: NSDate, isFileUploaded: Bool) -> JSQMessage {
+    func addVideoMediaMessage(videoURL: NSURL, videoThumbnailURL: NSURL, senderId: String, messageId: String, displayName: String,  date: NSDate, isFileUploaded: Bool) -> JSQMessage {
         
         let videoItem: JSQVideoMediaItem = JSQVideoMediaItem(fileURL: videoURL, thumbnailURL: videoThumbnailURL, isReadyToPlay: true, isFileUploaded: isFileUploaded )
-        let videoMessage: JSQMessage = JSQMessage(senderId: senderId, senderDisplayName: displayName, date: date, media: videoItem)
+        let videoMessage: JSQMessage = JSQMessage(senderId: senderId, messageId: messageId, senderDisplayName: displayName, date: date, media: videoItem)
 
         
         return videoMessage

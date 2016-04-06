@@ -57,16 +57,14 @@ class ChatInfoDataManager: NSObject {
                         failureHandler(chatInfo:chatInfo, error: nil)
                     }
                 }
-                
-                failureHandler(chatInfo:chatInfo, error: error)
-                
+                                
             }
             
         }
         
     }
     
-    //MARK: Fetch Chat Method
+    //MARK: Fetch Chat With TicketId Method
     func fetchChatMessages(ticketId: String, completionHandler: (chatInfoData: NSMutableArray, error: NSError?) -> Void) {
         
         let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
@@ -85,8 +83,27 @@ class ChatInfoDataManager: NSObject {
         
     }
     
-    //MARK: Update UserInfo Method
-    func updateChatInfo(chatData: ChatMessage, mediaMsg: String, failureHandler: (error: NSError?) -> Void) {
+    //MARK: Fetch All Chat Method
+    func fetchAllChatMessages(ticketId: String, completionHandler: (chatInfoData: NSMutableArray, error: NSError?) -> Void) {
+        
+        let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
+        let chatMessages: NSMutableArray = NSMutableArray()
+        
+        CoreDataManager.shared.executeFetchRequest(request) { (results, error) -> Void in
+            print(results)
+            
+            for chatInfo in results! {
+                chatMessages.addObject(chatInfo)
+            }
+            
+            completionHandler(chatInfoData: chatMessages, error: error)
+        }
+        
+    }
+
+    
+    //MARK: Update Chat Info Method
+    func updateChatInfo(chatData: ChatMessage, mediaMsg: String, failureHandler: (messageId: String?, error: NSError?) -> Void) {
         
         let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
         request.predicate = NSPredicate(format: "msgBody = %@", mediaMsg)
@@ -95,19 +112,60 @@ class ChatInfoDataManager: NSObject {
             print(results)
             
             if error == nil {
-                let chatInfo : ChatInfo = results?[0] as! ChatInfo
                 
-                chatInfo.msgId = chatData.msgId
-                chatInfo.msgBody = chatData.msgBody
-                chatInfo.isUploaded = chatData.isUploaded!
+                if results?.count > 0 {
+                    
+                    let chatInfo : ChatInfo = results?[0] as! ChatInfo
+                    
+                    chatInfo.msgId = chatData.msgId
+                    chatInfo.msgBody = chatData.msgBody
+                    chatInfo.isUploaded = chatData.isUploaded!
+                    
+                    CoreDataManager.shared.save({ (error) -> Void in
+                        if error != nil {
+                            failureHandler(messageId: nil, error: error)
+                        }else {
+                            failureHandler(messageId: chatInfo.msgId, error: nil)
+                        }
+                    })
 
-                CoreDataManager.shared.save({ (error) -> Void in
-                    if error != nil {
-                        failureHandler(error: error)
-                    }else {
-                        failureHandler(error: nil)
-                    }
-                })
+                }
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    //MARK: Update Comment Status For Chat Message Method
+    func updateChatCommentStatusInfo(chatData: ChatMessage, messageId: String, failureHandler: (messageId: String?, error: NSError?) -> Void) {
+        
+        let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
+        request.predicate = NSPredicate(format: "msgId = %@", messageId)
+        
+        CoreDataManager.shared.executeFetchRequest(request) { (results, error) -> Void  in
+            print(results)
+            
+            if error == nil {
+                
+                if results?.count > 0 {
+                    
+                    let chatInfo : ChatInfo = results?[0] as! ChatInfo
+                    
+                    chatInfo.msgId = chatData.msgId
+                    chatInfo.msgBody = chatData.msgBody
+                    chatInfo.isUploaded = chatData.isUploaded!
+                    
+                    CoreDataManager.shared.save({ (error) -> Void in
+                        if error != nil {
+                            failureHandler(messageId: nil, error: error)
+                        }else {
+                            failureHandler(messageId: chatInfo.msgId, error: nil)
+                        }
+                    })
+                    
+                }
                 
             }
             
@@ -115,9 +173,11 @@ class ChatInfoDataManager: NSObject {
         
     }
 
+    
 
-    //MARK: Delete UserInfo Method
-    func deleteUserInfo(chatData: ChatInfo, failureHandler: (error: NSError?) -> Void) {
+
+    //MARK: Delete Chat Info Method
+    func deleteChatInfo(chatData: ChatInfo, failureHandler: (error: NSError?) -> Void) {
         
         // delete all user info
         CoreDataManager.shared.managedObjectContext.deleteObject(chatData)
@@ -126,6 +186,30 @@ class ChatInfoDataManager: NSObject {
             if error != nil {
                 failureHandler(error: error)
             }
+        }
+        
+    }
+    
+    
+    func deleteChatMessage(messageId: String) {
+        
+        let request: NSFetchRequest = NSFetchRequest(entityName: CHAT_INFO_ENTITY)
+        request.predicate = NSPredicate(format: "msgId = %@", messageId)
+        
+        CoreDataManager.shared.executeFetchRequest(request) { (results, error) -> Void in
+            
+            print(results)
+            
+            if results?.count > 0 {
+                
+                let chatInfo : ChatInfo = results?[0] as! ChatInfo
+                
+                self.deleteChatInfo(chatInfo, failureHandler: { (error) -> Void in
+                    
+                })
+                
+            }
+
         }
         
     }

@@ -228,7 +228,13 @@ class ChatAPIManager: NSObject {
             
             if chatMessageInfo.msgBody!.isUrl() {
                 
-                ChatInfoDataManager.sharedInstance.updateChatInfo(chatMessageInfo, mediaMsg: chatMessageInfo.msgBody! , failureHandler: { (error) -> Void in
+                ChatInfoDataManager.sharedInstance.updateChatInfo(chatMessageInfo, mediaMsg: chatMessageInfo.msgBody! , failureHandler: { (messageId,error) -> Void in
+                    
+                    if error == nil {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: messageId)
+                        })
+                    }                   
                     
                 })
                 
@@ -304,18 +310,18 @@ class ChatAPIManager: NSObject {
                 if info.eventType == EventType.VisitorMessage.rawValue {
                     
                     if info.msgType == MessageType.Image.rawValue {
-                        chatMessages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(info.msgBody!, senderId: kJSQDemoAvatarIdSquires, displayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp!, isfileUploaded: info.isUploaded))
+                        chatMessages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(info.msgBody!, senderId: kJSQDemoAvatarIdSquires,messageId: info.msgId!, displayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp!, isfileUploaded: info.isUploaded))
                     }
                     else if info.msgType == MessageType.Video.rawValue {
-                        chatMessages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(NSURL(string: info.msgBody!)!, videoThumbnailURL:NSURL(string: info.thumbnailURL!)!, senderId:kJSQDemoAvatarIdSquires, displayName:kJSQDemoAvatarDisplayNameSquires, date: NSDate(), isFileUploaded: info.isUploaded))
+                        chatMessages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(NSURL(string: info.msgBody!)!, videoThumbnailURL:NSURL(string: info.thumbnailURL!)!, senderId:kJSQDemoAvatarIdSquires, messageId: info.msgId!, displayName:kJSQDemoAvatarDisplayNameSquires, date: NSDate(), isFileUploaded: info.isUploaded))
                     }
                     else {
-                         chatMessages.addObject(JSQMessage(senderId: kJSQDemoAvatarIdSquires, senderDisplayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp, text: info.msgBody))
+                         chatMessages.addObject(JSQMessage(senderId: kJSQDemoAvatarIdSquires, messageId: info.msgId, senderDisplayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp, text: info.msgBody))
                     }
                     
                 }
                 else if info.eventType == EventType.AgentMessage.rawValue{
-                    chatMessages.addObject(JSQMessage(senderId: info.senderId, senderDisplayName: info.displayName, date: info.timeStamp, text: info.msgBody))
+                    chatMessages.addObject(JSQMessage(senderId: info.senderId, messageId: info.msgId, senderDisplayName: info.displayName, date: info.timeStamp, text: info.msgBody))
                 }
                 
             }
@@ -336,11 +342,11 @@ class ChatAPIManager: NSObject {
             
             if info.eventType == EventType.VisitorMessage.rawValue {
                 
-            chatMessages.addObject(JSQMessage(senderId: kJSQDemoAvatarIdSquires, senderDisplayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp, text: info.msgBody))
+            chatMessages.addObject(JSQMessage(senderId: kJSQDemoAvatarIdSquires, messageId: info.msgId, senderDisplayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp, text: info.msgBody))
                 
             }
             else if info.eventType == EventType.AgentMessage.rawValue{
-                chatMessages.addObject(JSQMessage(senderId: info.senderId, senderDisplayName: info.displayName, date: info.timeStamp, text: info.msgBody))
+                chatMessages.addObject(JSQMessage(senderId: info.senderId, messageId: info.msgId, senderDisplayName: info.displayName, date: info.timeStamp, text: info.msgBody))
             }
             
         }

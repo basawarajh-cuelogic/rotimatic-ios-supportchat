@@ -141,6 +141,7 @@ class CoreDataManager: NSObject {
         if managedObjectContext.hasChanges {
             do {
                 try managedObjectContext.save()
+                failureHandler(error: nil)
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 let nserror = error as NSError

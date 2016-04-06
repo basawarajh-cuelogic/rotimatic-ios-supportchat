@@ -40,12 +40,9 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         checkSessionTimeOut()
         
-        //self.showLoadEarlierMessagesHeader = !ZDCChat.instance().session.dataSource().accountOnline()
-        
         showEarlierMessages()
         
         createUploadFolder()
-        
         
     }
     
@@ -77,7 +74,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
     
     func preChatInfo() {
         
-        let message: JSQMessage = JSQMessage(senderId: kJSQDemoAvatarIdNameSupportTeam, displayName: kJSQDemoAvatarDisplayNameSupportTeam, text: "Hi \(kJSQDemoAvatarDisplayNameSquires), how may i help you today")
+        let message: JSQMessage = JSQMessage(senderId: kJSQDemoAvatarIdNameSupportTeam, messageId: kJSQDemoAvatarIdSquires, displayName: kJSQDemoAvatarDisplayNameSupportTeam, text: "Hi \(kJSQDemoAvatarDisplayNameSquires), how may i help you today")
         messageModel.messages.insertObject(message, atIndex: 0)
         
     }
@@ -305,11 +302,9 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
                 
                 let photoData = mediaData as! JSQPhotoMediaItem
                 
-                /*if photoData.isFileUploaded {
-                    
-                }*/
-                
-                showImageViewer(photoData.imageURL)
+                if photoData.isFileUploaded {
+                    showImageViewer(photoData.imageURL)
+                }
                 
             }
             else if mediaData.isKindOfClass(JSQVideoMediaItem) {
@@ -317,11 +312,9 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
                 
                 let videoData = mediaData as! JSQVideoMediaItem
                 
-                /*if videoData.isFileUploaded {
-                    
-                }*/
-                
-                playVideoFromURL(videoData.fileURL)
+                if videoData.isFileUploaded {
+                    playVideoFromURL(videoData.fileURL)
+                }
                 
             }
             
@@ -332,11 +325,17 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
     //MARK: Delete Message
     override func collectionView(collectionView: JSQMessagesCollectionView!, didDeleteMessageAtIndexPath indexPath: NSIndexPath!) {
         
+        let message = messageModel.messages.objectAtIndex(indexPath.item) as! JSQMessage
+        
+        ChatInfoDataManager.sharedInstance.deleteChatMessage(message.messageId)
+        
         messageModel.messages.removeObjectAtIndex(indexPath.item)
         
         self.collectionView?.deleteItemsAtIndexPaths([indexPath])
         
         self.collectionView?.reloadData()
+            
+        
     }
     
     override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
@@ -346,10 +345,6 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         return true
     }
     
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        super.collectionView(collectionView, canPerformAction: action, forItemAtIndexPath: indexPath, withSender: sender)
-        return true
-    }
     
     override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
         super.collectionView(collectionView, performAction: action, forItemAtIndexPath: indexPath, withSender: sender)
@@ -427,7 +422,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         imageData!.writeToFile(filePath, atomically: true)
         
-        messageModel.messages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(filePath, senderId: kJSQDemoAvatarIdSquires, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isfileUploaded: false))
+        messageModel.messages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(filePath, senderId: kJSQDemoAvatarIdSquires, messageId: fileName, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isfileUploaded: false))
         
         let messageInfo: ChatMessage = ChatMessage()
         messageInfo.ticketId = self.ticketId
@@ -465,7 +460,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             let videoData = NSData(data: UIImagePNGRepresentation(image)!)
             videoData.writeToFile(fileThumbnailPath, atomically: true)
             
-            self.messageModel.messages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(fileURL, videoThumbnailURL: fileThumnailURL, senderId: kJSQDemoAvatarIdSquires, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isFileUploaded: false))
+            self.messageModel.messages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(fileURL, videoThumbnailURL: fileThumnailURL, senderId: kJSQDemoAvatarIdSquires, messageId: fileName, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isFileUploaded: false))
             
             let messageInfo: ChatMessage = ChatMessage()
             messageInfo.ticketId = self.ticketId
@@ -631,7 +626,6 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         return dateString
     }
-    
     
 
 }

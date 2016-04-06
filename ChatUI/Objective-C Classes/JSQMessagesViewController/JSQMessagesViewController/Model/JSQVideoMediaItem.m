@@ -64,13 +64,17 @@ typedef enum : NSUInteger {
     } else if (mediauploadStatus == kMediaUploadStatusFailed) {
         _imgViewUploadORCancel.hidden= NO;
         [_imgViewUploadORCancel setSelected:true];
+        self.isFileUploaded = NO;
         
     } else if (mediauploadStatus == kMediaUploadStatusUploading){
         _imgViewUploadORCancel.hidden= NO;
         [_imgViewUploadORCancel setSelected:false];
+        self.isFileUploaded = NO;
         
     } else if (mediauploadStatus == kMediaUploadStatusUploaded){
         _imgViewUploadORCancel.hidden= YES;
+        self.isFileUploaded = YES;
+
     }
 }
 
@@ -90,6 +94,7 @@ typedef enum : NSUInteger {
             _mediauploadStatus = kMediaUploadStatusWillStart;
 
         }
+        
     }
     return self;
 }
@@ -365,6 +370,7 @@ typedef enum : NSUInteger {
     self.mediauploadStatus = kMediaUploadStatusFailed;
     
 }
+
 
 
 @end

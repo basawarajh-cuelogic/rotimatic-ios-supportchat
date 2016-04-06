@@ -58,15 +58,18 @@ typedef enum : NSUInteger {
     if (mediauploadStatus == kMediaUploadStatusWillStart) {
         
     } else if (mediauploadStatus == kMediaUploadStatusFailed) {
+        self.isFileUploaded = NO;
         _imgViewUploadORCancel.hidden= NO;
         [_imgViewUploadORCancel setSelected:true];
         
     } else if (mediauploadStatus == kMediaUploadStatusUploading){
         _imgViewUploadORCancel.hidden= NO;
+        self.isFileUploaded = NO;
         [_imgViewUploadORCancel setSelected:false];
         
     } else if (mediauploadStatus == kMediaUploadStatusUploaded){
         _imgViewUploadORCancel.hidden= YES;
+        self.isFileUploaded = YES;
     }
 }
 
