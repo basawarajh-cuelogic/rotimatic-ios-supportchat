@@ -99,8 +99,7 @@ class ChatAPIManager: NSObject {
         insertChatMessagesInfoToDB(events) { (chatInfoData) -> Void in
             self.delegate?.receivedMessagesEvent(self.parseData(chatInfoData))
         }
-        
-        
+    
         
         /*fetchMessages { (chatInfoData) -> Void in
             self.delegate?.receivedMessagesEvent(chatInfoData)
@@ -115,6 +114,10 @@ class ChatAPIManager: NSObject {
     
     func sessionTimeOut() {
         delegate?.sessionTimeout()
+    }
+    
+    func isAccountOnline() -> Bool {
+        return ZDCChat.instance().session.dataSource().accountOnline()
     }
 
     //MARK: Notify Tying

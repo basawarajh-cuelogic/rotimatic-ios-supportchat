@@ -96,7 +96,7 @@
 
 #pragma mark - Typing indicator
 
-- (JSQMessagesTypingIndicatorFooterView *)dequeueTypingIndicatorFooterViewForIndexPath:(NSIndexPath *)indexPath
+- (JSQMessagesTypingIndicatorFooterView *)dequeueTypingIndicatorFooterViewForIndexPath:(NSIndexPath *)indexPath typingDisplayName:(NSString *)typingIndicatorDisplaysName avaterImage:(UIImage *)avatarImage
 {
     JSQMessagesTypingIndicatorFooterView *footerView = [super dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter
                                                                                  withReuseIdentifier:[JSQMessagesTypingIndicatorFooterView footerReuseIdentifier]
@@ -104,6 +104,8 @@
 
     [footerView configureWithEllipsisColor:self.typingIndicatorEllipsisColor
                         messageBubbleColor:self.typingIndicatorMessageBubbleColor
+                         typingDisplayName:typingIndicatorDisplaysName
+                               avaterImage:avatarImage
                        shouldDisplayOnLeft:self.typingIndicatorDisplaysOnLeft
                          forCollectionView:self];
 

@@ -22,6 +22,7 @@ class Tickets: NSObject {
     var ticketSubject: String =  String()
     var ticketStatus: String =  String()
     var ticketDescription: String = String()
+    var createdDate: String = String()
     
 }
 
@@ -141,6 +142,7 @@ class RMTickets: NSObject {
             ticketObj.ticketSubject = ticket.subject
             ticketObj.ticketStatus = ticket.status
             ticketObj.ticketDescription = ticket.requestDescription
+            ticketObj.createdDate = getDateString(ticket.createdAt)
             
             ticketsArr.addObject(ticketObj)
             
@@ -149,7 +151,55 @@ class RMTickets: NSObject {
         return ticketsArr as NSArray
     }
 
+    func getDateString(date: NSDate) -> String {
+        
+        var day: String = String()
+        
+        let calendar = NSCalendar.currentCalendar()
+        
+        let isToday = calendar.isDateInToday(date)
+        let isYesterday = calendar.isDateInYesterday(date)
+        
+        if isToday {
+            day = "Today"
+        }
+        else if isYesterday {
+            day = "Yesterday"
+        }
+        else {
+            
+            let myCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+            let myComponents = myCalendar.components(.Weekday, fromDate: date)
+            let weekDay = myComponents.weekday
+            day = dayString(weekDay)
+        }
+        
+        return day
+    }
     
+    func dayString(dayInt: Int) -> String {
+        
+        switch(dayInt) {
+            
+        case 1:
+            return "Sunday"
+        case 2:
+            return "Monday"
+        case 3:
+            return "Tuesaday"
+        case 4:
+            return "Wednesday"
+        case 5:
+            return "Thursday"
+        case 6:
+            return "Friday"
+        case 7:
+            return "Saturday"
+        default:
+            return "Invalid Date"
+        }
+        
+    }
    
     
 }

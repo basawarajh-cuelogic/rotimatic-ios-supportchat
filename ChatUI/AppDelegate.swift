@@ -27,15 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let defaultServiceConfiguration = AWSServiceConfiguration(
             region: DefaultServiceRegionType, credentialsProvider: credentialsProvider)
+    
+        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
         
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().barTintColor = UIColor(red: 63/255, green: 68/255, blue: 75/255, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.lightGrayColor(),
-            NSFontAttributeName: UIFont.systemFontOfSize(16)]
+            NSFontAttributeName: UIFont.systemFontOfSize(17)]
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
-        
-        AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
         
         return true
     }

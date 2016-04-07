@@ -72,6 +72,10 @@
  */
 @property (strong, nonatomic) UIColor *typingIndicatorEllipsisColor;
 
+@property (strong, nonatomic) NSString *typingIndicatorDisplaysName;
+
+@property (strong, nonatomic) UIImage *avatarImage;
+
 /**
  *  The color of the text in the load earlier messages header. The default value is a bright blue color.
  */
@@ -86,7 +90,7 @@
  *
  *  @return A valid `JSQMessagesTypingIndicatorFooterView` object.
  */
-- (JSQMessagesTypingIndicatorFooterView *)dequeueTypingIndicatorFooterViewForIndexPath:(NSIndexPath *)indexPath;
+- (JSQMessagesTypingIndicatorFooterView *)dequeueTypingIndicatorFooterViewForIndexPath:(NSIndexPath *)indexPath typingDisplayName:(NSString *)typingIndicatorDisplaysName avaterImage:(UIImage *)avatarImage;
 
 /**
  *  Returns a `JSQMessagesLoadEarlierHeaderView` object for the specified index path

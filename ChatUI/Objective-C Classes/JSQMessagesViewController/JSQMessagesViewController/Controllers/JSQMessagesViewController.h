@@ -156,6 +156,10 @@
  */
 @property (assign, nonatomic) BOOL showTypingIndicator;
 
+@property (strong, nonatomic) NSString *typingIndicatorDisplaysName;
+
+@property (strong, nonatomic) UIImage *avatarImage;
+
 /**
  *  Specifies whether or not the view controller should show the "load earlier messages" header view.
  *

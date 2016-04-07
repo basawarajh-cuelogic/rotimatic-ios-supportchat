@@ -20,6 +20,4 @@ class MessageModel: NSObject {
     var users: NSDictionary = NSDictionary()
     
     
-   
-    
 }

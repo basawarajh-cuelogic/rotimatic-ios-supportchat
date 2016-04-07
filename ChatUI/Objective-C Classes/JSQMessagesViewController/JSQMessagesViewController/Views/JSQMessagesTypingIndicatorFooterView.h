@@ -48,6 +48,10 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight;
  */
 + (NSString *)footerReuseIdentifier;
 
+@property (strong, nonatomic) IBOutlet UILabel *typingDisplayName;
+
+@property (strong, nonatomic) IBOutlet UIImageView *avatarImage;
+
 #pragma mark - Typing indicator
 
 /**
@@ -61,6 +65,8 @@ FOUNDATION_EXPORT const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight;
  */
 - (void)configureWithEllipsisColor:(UIColor *)ellipsisColor
                 messageBubbleColor:(UIColor *)messageBubbleColor
+                 typingDisplayName:(NSString *)typingIndicatorDisplaysName
+                       avaterImage:(UIImage *) avatarImage
                shouldDisplayOnLeft:(BOOL)shouldDisplayOnLeft
                  forCollectionView:(UICollectionView *)collectionView;
 

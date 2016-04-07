@@ -19,7 +19,7 @@ let kJSQDemoAvatarDisplayNameSquires = UserName
 let kJSQDemoAvatarDisplayNameSupportTeam = "Support Team"
 
 
-class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ChatAPIManagerDelegate, FileUploadAPIManagerDelegate, UIGestureRecognizerDelegate {
+class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ChatAPIManagerDelegate, UIGestureRecognizerDelegate {
 
     var messageModel: MessageModel = MessageModel()
     var subject: String = String()
@@ -31,6 +31,11 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
     
     var sessionTimeOut: Bool = Bool()
     
+    var onlineStatusView: UIView = UIView()
+    
+    
+
+    //MARK: VC Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,11 +49,41 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         createUploadFolder()
         
+        checkAccountOnline()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sendTranscript", name: kDidEnterBackground, object: nil)
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.titleView = customNavigationTitleView()
+    }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView!.collectionViewLayout.springinessEnabled = false
+        
+        if ((self.navigationController?.respondsToSelector("interactivePopGestureRecognizer")) != nil) {
+            self.navigationController?.interactivePopGestureRecognizer?.enabled = false
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        }
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.navigationBar.topItem?.title = subject
+        
+        if ((self.navigationController?.respondsToSelector("interactivePopGestureRecognizer")) != nil) {
+            self.navigationController?.interactivePopGestureRecognizer?.enabled = true
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        }
+        
+    }
+
+    //MARK: Customize UI
     func customizeUI() {
         
         automaticallyScrollsToMostRecentMessage = true
@@ -64,6 +99,35 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         self.collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSizeMake(100, 100)
 
         preChatInfo()
+    }
+    
+    func customNavigationTitleView() -> UIView {
+        
+        let navBarHeight = self.navigationController?.navigationBar.frame.size.height
+        let width = self.view.frame.size.width
+        
+        let contentView = UIView(frame: CGRectMake(0,0,width-100,navBarHeight!))
+        contentView.backgroundColor = UIColor.clearColor()
+        
+        let stringSize = (subject as NSString).sizeWithAttributes([NSFontAttributeName: UIFont.systemFontOfSize(17)])
+        
+        let titleLabel = UILabel(frame: CGRectMake(0,0,stringSize.width,navBarHeight!))
+        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.backgroundColor = UIColor.clearColor()
+        titleLabel.textColor = UIColor.lightGrayColor()
+        titleLabel.font = UIFont.systemFontOfSize(17)
+        titleLabel.text = subject
+        titleLabel.center = contentView.center
+        
+        onlineStatusView = UIView(frame: CGRectMake(titleLabel.frame.origin.x - 18,15,15,15))
+        onlineStatusView.layer.cornerRadius = onlineStatusView.frame.size.height/2
+        onlineStatusView.layer.masksToBounds = true
+        onlineStatusView.backgroundColor = UIColor.redColor()
+        
+        contentView.addSubview(onlineStatusView)
+        contentView.addSubview(titleLabel)
+        
+        return contentView
     }
     
     func initiateChatAPI() {
@@ -106,7 +170,6 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
                     
                     self.messageModel.messages = chatInfoData
                     self.preChatInfo()
-                    //self.showLoadEarlierMessagesHeader = !ZDCChat.instance().session.dataSource().accountOnline()
                     self.finishSendingMessageAnimated(false)
                     
                 })
@@ -116,34 +179,18 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         }
         
     }
- 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.topItem?.title = subject
-        collectionView!.collectionViewLayout.springinessEnabled = false
-        
-        if ((self.navigationController?.respondsToSelector("interactivePopGestureRecognizer")) != nil) {
-            self.navigationController?.interactivePopGestureRecognizer?.enabled = false
-            self.navigationController?.interactivePopGestureRecognizer?.delegate = self
-        }
-        
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        if ((self.navigationController?.respondsToSelector("interactivePopGestureRecognizer")) != nil) {
-            self.navigationController?.interactivePopGestureRecognizer?.enabled = true
-            self.navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        }
-        
-    }
 
     
     
     func onClickOfBack() {
         ChatTranscriptManager().sendChatTranscriptToComment(self.ticketId)
-        self.navigationController?.popViewControllerAnimated(true)
+        
+        for controller in self.navigationController!.viewControllers as Array {
+            if controller.isKindOfClass(TicketsViewController) {
+                self.navigationController?.popToViewController(controller as! TicketsViewController, animated: true)
+                break
+            }
+        }
     }
     
     
@@ -166,8 +213,6 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         date: NSDate!) {
             
             checkSessionTimeOut()
-            
-            //self.showLoadEarlierMessagesHeader = !ZDCChat.instance().session.dataSource().accountOnline()
             
             if NetworkAvailability.sharedInstance.hasConnectivity() {
                 ChatAPIManager.sharedManager.sendChatMessage(text)
@@ -220,9 +265,9 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         let message: JSQMessage = messageModel.messages.objectAtIndex(indexPath.item) as! JSQMessage
         if message.senderId == senderId {
-            return JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "demo_avatar_cook.png"), diameter: 100)
+            return JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "default_profile_icon.png"), diameter: 100)
         } else {
-            return JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "demo_avatar_jobs.png"), diameter: 100)
+            return JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "default_profile_icon.png"), diameter: 100)
         }
 
     }
@@ -401,10 +446,10 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         
         if mediaType == kUTTypeImage as String{
+            
             let imageSelected = info[UIImagePickerControllerOriginalImage] as! UIImage //2
             
             self.uploadPhoto(imageSelected)
-
             
         }
         else if mediaType == kUTTypeMovie as String {
@@ -540,8 +585,10 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         case .Connecting:
             break
         case .Connected:
+            checkAccountOnline()
             break
         case .Disconnected:
+            checkAccountOnline()
             break
         case .Closed:
             break
@@ -557,9 +604,8 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             messageModel.messages.addObject(chatMessage)
         }
         
-        //messageModel.messages = messages as! NSMutableArray
-        //self.preChatInfo()
-        //self.showLoadEarlierMessagesHeader = !ZDCChat.instance().session.dataSource().accountOnline()
+        checkAccountOnline()
+    
         finishSendingMessageAnimated(true)
     }
     
@@ -567,8 +613,12 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         if agentInfo.count > 0 {
             
+            checkAccountOnline()
+            
             if (agentInfo.objectForKey(agentInfo.allKeys[0]) != nil) {
                 self.showTypingIndicator = (agentInfo.objectForKey(agentInfo.allKeys[0])?.typing)!
+                self.typingIndicatorDisplaysName = "\((agentInfo.objectForKey(agentInfo.allKeys[0])?.displayName)!) is typing"
+                self.avatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "default_profile_icon.png"), diameter: 100).avatarImage
                 scrollToBottomAnimated(true)
             }
 
@@ -582,20 +632,19 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         sessionTimeOut = true
     }
     
-    //MARK: FileUploadManager Delegate
-    func progressUpload(totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
-        SVProgressHUD.showProgress(Float(Double(totalBytesSent) / Double(totalBytesExpectedToSend)), status: "Uploading...")
+    //MARK: Check Account Online
+    
+    func checkAccountOnline() {
+        
+        if ChatAPIManager.sharedManager.isAccountOnline() {
+            onlineStatusView.backgroundColor = openTicketColor
+        }
+        else {
+            onlineStatusView.backgroundColor = UIColor.redColor()
+        }
     }
     
-    func uploadSuccess(fileURL: String) {
-        ChatAPIManager.sharedManager.sendChatMessage(fileURL)
-        SVProgressHUD.dismiss()
-    }
-    
-    func uploadFailed() {
-        SVProgressHUD.showErrorWithStatus("Upload Failed")
-    }
-    
+
     //MARK: Open Media file
     func playVideoFromURL(videoPath: NSURL) {
         //filePath may be from the Bundle or from the Saved file Directory, it is just the path for the video

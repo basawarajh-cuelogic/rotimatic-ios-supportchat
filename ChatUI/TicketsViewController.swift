@@ -32,7 +32,7 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.topItem?.title = "Chat"
-        getTickets("new,open")
+        getTickets("new,open,closed,solved")
     }
 
     override func didReceiveMemoryWarning() {
@@ -85,6 +85,7 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.lblTicketTitle.text = requestDetails.ticketSubject
         cell.lblTicketDescription.text = requestDetails.ticketDescription
+        cell.lblTime.text = requestDetails.createdDate
         
         if isTicketOpen(requestDetails.ticketStatus) {
             cell.statusView.backgroundColor = openTicketColor

@@ -22,7 +22,7 @@
 
 #import "UIImage+JSQMessages.h"
 
-const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight = 46.0f;
+const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight = 55.0f;
 
 
 @interface JSQMessagesTypingIndicatorFooterView ()
@@ -32,6 +32,7 @@ const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight = 46.0f;
 
 @property (weak, nonatomic) IBOutlet UIImageView *typingIndicatorImageView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *typingIndicatorImageViewRightHorizontalConstraint;
+
 
 @end
 
@@ -81,6 +82,8 @@ const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight = 46.0f;
 
 - (void)configureWithEllipsisColor:(UIColor *)ellipsisColor
                 messageBubbleColor:(UIColor *)messageBubbleColor
+                  typingDisplayName:(NSString *) displayName
+                        avaterImage:(UIImage *) avatarImage
                shouldDisplayOnLeft:(BOOL)shouldDisplayOnLeft
                  forCollectionView:(UICollectionView *)collectionView
 {
@@ -88,8 +91,8 @@ const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight = 46.0f;
     NSParameterAssert(messageBubbleColor != nil);
     NSParameterAssert(collectionView != nil);
     
-    CGFloat bubbleMarginMinimumSpacing = 6.0f;
-    CGFloat indicatorMarginMinimumSpacing = 26.0f;
+    CGFloat bubbleMarginMinimumSpacing = 20.0f;
+    CGFloat indicatorMarginMinimumSpacing = 58.0f;
     
     JSQMessagesBubbleImageFactory *bubbleImageFactory = [[JSQMessagesBubbleImageFactory alloc] init];
     
@@ -105,6 +108,8 @@ const CGFloat kJSQMessagesTypingIndicatorFooterViewHeight = 46.0f;
         
         self.bubbleImageViewRightHorizontalConstraint.constant = bubbleMarginMaximumSpacing;
         self.typingIndicatorImageViewRightHorizontalConstraint.constant = indicatorMarginMaximumSpacing;
+        self.typingDisplayName.text = displayName;
+        self.avatarImage.image = avatarImage;
     }
     else {
         self.bubbleImageView.image = [bubbleImageFactory outgoingMessagesBubbleImageWithColor:messageBubbleColor].messageBubbleImage;
