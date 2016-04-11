@@ -55,6 +55,13 @@ class NewChatViewController: UIViewController, UITextFieldDelegate {
         
         let textLenght = (textField.text?.characters.count)! + (string.characters.count - range.length)
         
+        if (string == " " &&  textLenght == 1) {
+            if ((textField.text?.characters.count) != nil) {
+                return false;
+            }
+            
+        }
+        
         if textLenght == 0 {
             btnNext.enabled = false
         }
@@ -82,6 +89,13 @@ class NewChatViewController: UIViewController, UITextFieldDelegate {
     //MARK: IBActions
     @IBAction func onClickOfNext(sender: AnyObject) {
         
+        txtfldSubject.resignFirstResponder()
+        createTicket()
+        
+    }
+    
+    func createTicket() {
+        
         let ticketRequest: TicketRequest = TicketRequest()
         ticketRequest.ticketSubject = txtfldSubject.text!
         ticketRequest.ticketDescription = "Description will contain machine details and other important information once integrated in main app."
@@ -101,15 +115,16 @@ class NewChatViewController: UIViewController, UITextFieldDelegate {
                     let requestData = anyObj["request"] as! NSDictionary
                     let ticketId = requestData["id"]
                     self.txtfldSubject.resignFirstResponder()
+                    //ChatAPIManager.sharedManager.endChat()
                     self.performSegueWithIdentifier(Segue_Chat_UI, sender: ticketId)
                     
                     // use anyObj here
                 } catch let error as NSError {
                     print("json error: \(error.localizedDescription)")
                 }
- 
+                
             }
-
+            
         }
         
     }

@@ -30,6 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         AWSServiceManager.defaultServiceManager().defaultServiceConfiguration = defaultServiceConfiguration
         
+        navigationbarCustomisation()
+        
+        initChatSession()
+        
+        
+        return true
+    }
+    
+    func navigationbarCustomisation() {
+        
         UINavigationBar.appearance().translucent = false
         UINavigationBar.appearance().barTintColor = UIColor(red: 63/255, green: 68/255, blue: 75/255, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
@@ -37,7 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSFontAttributeName: UIFont.systemFontOfSize(17)]
         UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
         
-        return true
+    }
+    
+    func initChatSession() {
+        
+        if !MessageModel().isChatSessionActive() {
+            
+            ChatAPIManager.sharedManager.configureZopimChatSDK({ (isComplete) -> Void in
+                
+            })
+            
+        }
+
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -65,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
+        MessageModel().setSessionActive(false)
     }
 
     // MARK: - Core Data stack

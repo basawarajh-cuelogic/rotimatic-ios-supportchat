@@ -17,6 +17,7 @@ let kJSQDemoAvatarIdSquires = "053496-4509-289"
 let kJSQDemoAvatarIdNameSupportTeam = "707-8956784-57"
 let kJSQDemoAvatarDisplayNameSquires = UserName
 let kJSQDemoAvatarDisplayNameSupportTeam = "Support Team"
+let kMediaUploaded = "MediaUploaded"
 
 
 class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ChatAPIManagerDelegate, UIGestureRecognizerDelegate {
@@ -24,12 +25,17 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
     var messageModel: MessageModel = MessageModel()
     var subject: String = String()
     var ticketId: String = String()
+    var ticketSubject: String = String()
+
     
     let picker = UIImagePickerController()
     var uploadImage: UIImage = UIImage()
     var temMessages: NSMutableArray = NSMutableArray()
     
     var sessionTimeOut: Bool = Bool()
+    
+    var isNewChatSession: Bool = Bool()
+    var textMessage: String = String()
     
     var onlineStatusView: UIView = UIView()
     
@@ -41,8 +47,12 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         customizeUI()
         
-        initiateChatAPI()
+        initiateChatAPI { (isConfigured) -> Void in
+            
+        }
         
+        isNewChatSession = false
+
         checkSessionTimeOut()
         
         showEarlierMessages()
@@ -52,12 +62,13 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         checkAccountOnline()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "sendTranscript", name: kDidEnterBackground, object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "mediaUploaded:", name: kMediaUploaded, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.titleView = customNavigationTitleView()
+        checkAccountOnline()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -130,11 +141,16 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         return contentView
     }
     
-    func initiateChatAPI() {
+    func initiateChatAPI(completionBlock:(isConfigured: Bool) -> Void) {
         
-        ChatAPIManager.sharedManager.configureZopimChatSDK()
         ChatAPIManager.sharedManager.delegate = self
         ChatAPIManager.sharedManager.ticketId = ticketId
+        ChatAPIManager.sharedManager.configureZopimChatSDK { (isComplete) -> Void in
+            
+            completionBlock(isConfigured: isComplete)
+            
+        }
+       
        
     }
     
@@ -198,6 +214,20 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         ChatTranscriptManager().sendChatTranscriptToComment(self.ticketId)
     }
     
+    func mediaUploaded(notification: NSNotification) {
+        
+        let mediaMessageInfo = notification.object as! NSMutableDictionary
+        
+        let mediaMessage = mediaMessageInfo.objectForKey("message") as! String
+        
+        let ticketId = mediaMessageInfo.objectForKey("ticketId") as! String
+        
+        let subject = mediaMessageInfo.objectForKey("subject") as! String
+        
+        sendMediaMessage(mediaMessage, ticketId: ticketId, subject: subject)
+        
+    }
+    
     //MARK: UIGestureRecognizerDelegate
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool {
         return false
@@ -214,16 +244,60 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             
             checkSessionTimeOut()
             
-            if NetworkAvailability.sharedInstance.hasConnectivity() {
+            sendMessage(text)
+            
+            finishSendingMessageAnimated(true)
+
+            
+    }
+    
+    func sendMessage(text: String) {
+        
+        if NetworkAvailability.sharedInstance.hasConnectivity() {
+            
+            if isCurrentTicket() {
+                isNewChatSession = false
                 ChatAPIManager.sharedManager.sendChatMessage(text)
             }
             else {
-                ChatAPIManager.sharedManager.sendOfflineChatMessage(text)
+                isNewChatSession = true
+                messageModel.setCurrentSessionTicketId(ticketId)
+                ChatAPIManager.sharedManager.endChat()
+                initiateChatAPI({ (isConfigured) -> Void in
+                    
+                })
+                textMessage = text
+                ticketSubject = self.subject
             }
             
-            finishSendingMessageAnimated(true)
-            
+        }
+        
     }
+    
+    func sendMediaMessage(text: String, ticketId: String, subject: String) {
+        
+        if NetworkAvailability.sharedInstance.hasConnectivity() {
+            
+            if isCurrentTicketForMedia(ticketId) {
+                isNewChatSession = false
+                ChatAPIManager.sharedManager.sendChatMessage(text)
+            }
+            else {
+                isNewChatSession = true
+                messageModel.setCurrentSessionTicketId(ticketId)
+                ChatAPIManager.sharedManager.endChat()
+                initiateChatAPI({ (isConfigured) -> Void in
+                    
+                })
+                textMessage = text
+                ticketSubject = subject
+
+            }
+            
+        }
+        
+    }
+
     
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -482,7 +556,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
         imageData!.writeToFile(filePath, atomically: true)
         
-        messageModel.messages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(filePath, senderId: kJSQDemoAvatarIdSquires, messageId: fileName, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isfileUploaded: false))
+        messageModel.messages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(filePath, senderId: kJSQDemoAvatarIdSquires, messageId: fileName, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isfileUploaded: false, ticketId: self.ticketId, subject: self.subject))
         
         let messageInfo: ChatMessage = ChatMessage()
         messageInfo.ticketId = self.ticketId
@@ -497,7 +571,6 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         messageInfo.isUploaded = false
         messageInfo.commentSync = false
 
-        
         ChatInfoDataManager.sharedInstance.insertChatInfo(messageInfo, failureHandler: { (error) -> Void in
             
         })
@@ -516,13 +589,12 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         videoData?.writeToFile(filePath, atomically: true)
         let messageDate = NSDate()
         
-        
         ChatMediaData.sharedInstance.loadThumbnail(mediaURL, completionBlock: { (image) -> Void in
             
             let videoData = NSData(data: UIImagePNGRepresentation(image)!)
             videoData.writeToFile(fileThumbnailPath, atomically: true)
             
-            self.messageModel.messages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(fileURL, videoThumbnailURL: fileThumnailURL, senderId: kJSQDemoAvatarIdSquires, messageId: fileName, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isFileUploaded: false))
+            self.messageModel.messages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(fileURL, videoThumbnailURL: fileThumnailURL, senderId: kJSQDemoAvatarIdSquires, messageId: fileName, displayName: kJSQDemoAvatarDisplayNameSquires, date: messageDate, isFileUploaded: false, ticketId: self.ticketId, subject: self.subject))
             
             let messageInfo: ChatMessage = ChatMessage()
             messageInfo.ticketId = self.ticketId
@@ -585,7 +657,17 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         case .Connecting:
             break
         case .Connected:
+            
+            messageModel.setSessionActive(true)
+            
             checkAccountOnline()
+            
+            if isNewChatSession{
+                ChatAPIManager.sharedManager.sendChatMessage("<-----Refer To Ticket - \(self.ticketSubject)----->")
+                ChatAPIManager.sharedManager.sendChatMessage(textMessage)
+                isNewChatSession = false
+            }
+            
             break
         case .Disconnected:
             checkAccountOnline()
@@ -600,13 +682,18 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
     
     func receivedMessagesEvent(messages: NSArray) {
         
-        for chatMessage in messages {
-            messageModel.messages.addObject(chatMessage)
+        if isCurrentTicket() {
+            
+            for chatMessage in messages {
+                messageModel.messages.addObject(chatMessage)
+            }
+            
+            checkAccountOnline()
+            
+            finishSendingMessageAnimated(true)
+            
         }
         
-        checkAccountOnline()
-    
-        finishSendingMessageAnimated(true)
     }
     
     func agentEventData(agentInfo: NSDictionary) {
@@ -615,25 +702,37 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
             
             checkAccountOnline()
             
-            if (agentInfo.objectForKey(agentInfo.allKeys[0]) != nil) {
-                self.showTypingIndicator = (agentInfo.objectForKey(agentInfo.allKeys[0])?.typing)!
-                self.typingIndicatorDisplaysName = "\((agentInfo.objectForKey(agentInfo.allKeys[0])?.displayName)!) is typing"
-                self.avatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "default_profile_icon.png"), diameter: 100).avatarImage
-                scrollToBottomAnimated(true)
+            if isCurrentTicket() {
+                agentTypingIndicator(agentInfo)
             }
-
+            
         }
         
     }
     
+    func agentTypingIndicator(agentInfoDict: NSDictionary) {
+        
+        if (agentInfoDict.objectForKey(agentInfoDict.allKeys[0]) != nil) {
+            self.showTypingIndicator = (agentInfoDict.objectForKey(agentInfoDict.allKeys[0])?.typing)!
+            self.typingIndicatorDisplaysName = "\((agentInfoDict.objectForKey(agentInfoDict.allKeys[0])?.displayName)!) is typing"
+            self.avatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "default_profile_icon.png"), diameter: 100).avatarImage
+            scrollToBottomAnimated(true)
+        }
+
+    }
+    
     func sessionTimeout() {
-        initiateChatAPI()
+        
+        messageModel.setSessionActive(false)
+        
+        initiateChatAPI { (isConfigured) -> Void in
+            
+        }
         ZDCChat.instance().session.notifyVisitorActive()
         sessionTimeOut = true
     }
     
     //MARK: Check Account Online
-    
     func checkAccountOnline() {
         
         if ChatAPIManager.sharedManager.isAccountOnline() {
@@ -676,6 +775,7 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         
     }
     
+    //MARK: Get Date String
     func getDateString(date: NSDate) -> String {
      
         let isTodayDate = NSCalendar .currentCalendar().isDateInToday(date)
@@ -694,6 +794,44 @@ class ViewController: JSQMessagesViewController, UIImagePickerControllerDelegate
         return dateString
     }
     
+    func isCurrentTicket() -> Bool {
+    
+        if messageModel.getActiveSessionTicketId() == nil {
+            messageModel.setCurrentSessionTicketId(self.ticketId)
+            return true
+        }
+        else {
+            
+            if self.ticketId == messageModel.getActiveSessionTicketId() {
+                return true
+            }
+            else {
+                return false
+            }
+
+        }
+        
+    }
+    
+    func isCurrentTicketForMedia(ticketId: String) -> Bool {
+        
+        if messageModel.getActiveSessionTicketId() == nil {
+            messageModel.setCurrentSessionTicketId(ticketId)
+            return true
+        }
+        else {
+            
+            if self.ticketId == messageModel.getActiveSessionTicketId() {
+                return true
+            }
+            else {
+                return false
+            }
+            
+        }
+        
+    }
+
 
 }
 

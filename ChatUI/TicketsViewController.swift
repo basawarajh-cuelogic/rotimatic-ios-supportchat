@@ -62,6 +62,20 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    
+    func initChatSession() {
+        
+        if !MessageModel().isChatSessionActive() {
+            
+            ChatAPIManager.sharedManager.configureZopimChatSDK({ (isComplete) -> Void in
+                
+            })
+            
+        }
+        
+    }
+
+    
     //MARK:  UITableViewDataSource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return allTickets.count
@@ -115,6 +129,8 @@ class TicketsViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         let ticketDetails = allTickets[indexPath.row]
+        
+        initChatSession()
         
         self.performSegueWithIdentifier(Segue_Chat_Details, sender: ticketDetails)
     }

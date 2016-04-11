@@ -38,7 +38,7 @@ class ChatAPIManager: NSObject {
     }
     
     //Initial Configuration ZopimChatSDK
-    func configureZopimChatSDK() {
+    func configureZopimChatSDK(completionBlock:(isComplete: Bool) -> Void) {
         
         ZDCChat.configure { (configure) -> Void in
             configure.accountKey = self.kAccountKey
@@ -54,6 +54,8 @@ class ChatAPIManager: NSObject {
             self.addObservers()
             
             ZDCLog.enable(true)
+            
+            completionBlock(isComplete: true)
     
         }
         
@@ -244,11 +246,15 @@ class ChatAPIManager: NSObject {
             }
             else {
               
-                ChatInfoDataManager.sharedInstance.insertChatInfo(messageInfo as! ChatMessage, failureHandler: { (chatInfo, error) -> Void in
-                    messages.addObject(chatInfo)
-                    completionHandler(chatInfoData: messages)
-                })
-                
+                if chatMessageInfo.msgBody?.lowercaseString.rangeOfString("<-----refer") == nil {
+                    
+                    ChatInfoDataManager.sharedInstance.insertChatInfo(messageInfo as! ChatMessage, failureHandler: { (chatInfo, error) -> Void in
+                        messages.addObject(chatInfo)
+                        completionHandler(chatInfoData: messages)
+                    })
+                    
+                }
+               
             }
             
         }
@@ -268,7 +274,7 @@ class ChatAPIManager: NSObject {
                 
                 let chatMessage: ChatMessage = ChatMessage()
                 
-                chatMessage.ticketId = ticketId
+                chatMessage.ticketId = MessageModel().getActiveSessionTicketId()
                 chatMessage.senderId = info.nickname
                 chatMessage.displayName = info.displayName
                 chatMessage.msgId = info.eventId
@@ -313,10 +319,10 @@ class ChatAPIManager: NSObject {
                 if info.eventType == EventType.VisitorMessage.rawValue {
                     
                     if info.msgType == MessageType.Image.rawValue {
-                        chatMessages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(info.msgBody!, senderId: kJSQDemoAvatarIdSquires,messageId: info.msgId!, displayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp!, isfileUploaded: info.isUploaded))
+                        chatMessages.addObject(ChatMediaData.sharedInstance.addPhotoMediaMessage(info.msgBody!, senderId: kJSQDemoAvatarIdSquires,messageId: info.msgId!, displayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp!, isfileUploaded: info.isUploaded, ticketId: info.msgId!, subject: ""))
                     }
                     else if info.msgType == MessageType.Video.rawValue {
-                        chatMessages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(NSURL(string: info.msgBody!)!, videoThumbnailURL:NSURL(string: info.thumbnailURL!)!, senderId:kJSQDemoAvatarIdSquires, messageId: info.msgId!, displayName:kJSQDemoAvatarDisplayNameSquires, date: NSDate(), isFileUploaded: info.isUploaded))
+                        chatMessages.addObject(ChatMediaData.sharedInstance.addVideoMediaMessage(NSURL(string: info.msgBody!)!, videoThumbnailURL:NSURL(string: info.thumbnailURL!)!, senderId:kJSQDemoAvatarIdSquires, messageId: info.msgId!, displayName:kJSQDemoAvatarDisplayNameSquires, date: NSDate(), isFileUploaded: info.isUploaded, ticketId: info.msgId!, subject: ""))
                     }
                     else {
                          chatMessages.addObject(JSQMessage(senderId: kJSQDemoAvatarIdSquires, messageId: info.msgId, senderDisplayName: kJSQDemoAvatarDisplayNameSquires, date: info.timeStamp, text: info.msgBody))

@@ -52,7 +52,23 @@
 
 @property (nonatomic) BOOL isFileUploaded;
 
+/**
+ *  Cached Media View.
+ */
+
 @property (strong, nonatomic) UIView *cachedMediaView;
+
+/**
+ *  Ticket Id
+ */
+@property (nonatomic, strong) NSString *ticketId;
+
+/**
+ *  Ticket Subject
+ */
+@property (nonatomic, strong) NSString *ticketSubject;
+
+
 
 /**
  *  Initializes and returns a video media item having the given fileURL.
@@ -67,6 +83,6 @@
  *  isReadyToPlay. Once the video has been saved to disk, or is ready to stream, you can
  *  set the fileURL property or isReadyToPlay property, respectively.
  */
-- (instancetype)initWithFileURL:(NSURL *)fileURL thumbnailURL:(NSURL *)thumbnailURL isReadyToPlay:(BOOL)isReadyToPlay isFileUploaded:(BOOL) isFileUploded;
+- (instancetype)initWithFileURL:(NSURL *)fileURL thumbnailURL:(NSURL *)thumbnailURL isReadyToPlay:(BOOL)isReadyToPlay isFileUploaded:(BOOL) isFileUploaded ticketId:(NSString *) ticketId subject:(NSString *) subject;
 
 @end

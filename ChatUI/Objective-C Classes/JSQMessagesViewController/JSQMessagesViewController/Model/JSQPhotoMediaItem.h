@@ -32,11 +32,31 @@
  */
 @property (copy, nonatomic) UIImage *image;
 
+/**
+ *  The image url.
+ */
 @property (copy, nonatomic) NSURL *imageURL;
 
+/**
+ *  File uploaded status
+ */
 @property (nonatomic) BOOL isFileUploaded;
 
+/**
+ *  Cached Media View
+ */
 @property (strong, nonatomic) UIView *cachedMediaView;
+
+/**
+ *  Ticket Id
+ */
+@property (nonatomic, strong) NSString *ticketId;
+
+/**
+ *  Ticket Subject
+ */
+@property (nonatomic, strong) NSString *ticketSubject;
+
 
 
 /**
@@ -52,6 +72,6 @@
  */
 - (instancetype)initWithImage:(UIImage *)image;
 
-- (instancetype)initWithURL:(NSURL *)imageURL fileUploaded:(BOOL) isFileUploaded;
+- (instancetype)initWithURL:(NSURL *)imageURL fileUploaded:(BOOL) isFileUploaded ticketId:(NSString *) ticketId subject:(NSString *) subject;
 
 @end

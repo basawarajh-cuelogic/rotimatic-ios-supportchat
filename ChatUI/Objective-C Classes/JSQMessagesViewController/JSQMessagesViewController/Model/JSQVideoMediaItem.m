@@ -79,15 +79,17 @@ typedef enum : NSUInteger {
 }
 
 
-- (instancetype)initWithFileURL:(NSURL *)fileURL thumbnailURL:(NSURL *)thumbnailURL isReadyToPlay:(BOOL)isReadyToPlay isFileUploaded:(BOOL) isFileUploded
+- (instancetype)initWithFileURL:(NSURL *)fileURL thumbnailURL:(NSURL *)thumbnailURL isReadyToPlay:(BOOL)isReadyToPlay isFileUploaded:(BOOL) isFileUploaded ticketId:(NSString *) ticketId subject:(NSString *) subject
 {
     self = [super init];
     if (self) {
         _fileURL = [fileURL copy];
         _fileThumbnailURL = [thumbnailURL copy];
         _isReadyToPlay = isReadyToPlay;
-        _isFileUploaded = isFileUploded;
+        _isFileUploaded = isFileUploaded;
+        _ticketId = ticketId;
         _cachedVideoImageView = nil;
+        _ticketSubject = subject;
         if (_isFileUploaded) {
             _mediauploadStatus = kMediaUploadStatusUploaded;
         } else {
@@ -334,7 +336,7 @@ typedef enum : NSUInteger {
 
 - (instancetype)copyWithZone:(NSZone *)zone
 {
-    JSQVideoMediaItem *copy = [[[self class] allocWithZone:zone] initWithFileURL:self.fileURL thumbnailURL:self.fileThumbnailURL isReadyToPlay:self.isReadyToPlay isFileUploaded:self.isFileUploaded];
+    JSQVideoMediaItem *copy = [[[self class] allocWithZone:zone] initWithFileURL:self.fileURL thumbnailURL:self.fileThumbnailURL isReadyToPlay:self.isReadyToPlay isFileUploaded:self.isFileUploaded ticketId: self.ticketId subject:self.ticketSubject];
     copy.appliesMediaViewMaskAsOutgoing = self.appliesMediaViewMaskAsOutgoing;
     return copy;
 }
@@ -358,7 +360,14 @@ typedef enum : NSUInteger {
 {
     [self.progressView setHidden:YES];
     [_imgViewPlay setHidden:NO];
-    [[ChatAPIManager sharedManager] sendChatMessage:fileURL];
+    //[[ChatAPIManager sharedManager] sendChatMessage:fileURL];
+    
+    NSMutableDictionary *uploadedInfoDict = [[NSMutableDictionary alloc] init];
+    [uploadedInfoDict setObject:fileURL forKey:@"message"];
+    [uploadedInfoDict setObject:self.ticketId forKey:@"ticketId"];
+    [uploadedInfoDict setObject:self.ticketSubject forKey:@"subject"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MediaUploaded" object:uploadedInfoDict];
     self.mediauploadStatus = kMediaUploadStatusUploaded;
 
 }

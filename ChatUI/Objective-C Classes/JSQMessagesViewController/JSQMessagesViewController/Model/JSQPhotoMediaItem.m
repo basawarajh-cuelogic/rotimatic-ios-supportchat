@@ -84,13 +84,15 @@ typedef enum : NSUInteger {
     return self;
 }
 
-- (instancetype)initWithURL:(NSURL *)imageURL fileUploaded:(BOOL) isFileUploaded
+- (instancetype)initWithURL:(NSURL *)imageURL fileUploaded:(BOOL) isFileUploaded ticketId:(NSString *) ticketId subject:(NSString *) subject
 {
     self = [super init];
     if (self) {
         _imageURL = [imageURL copy];
         _cachedImageView = nil;
         _isFileUploaded = isFileUploaded;
+        _ticketId = ticketId;
+        _ticketSubject = subject;
         if (_isFileUploaded) {
             _mediauploadStatus = kMediaUploadStatusUploaded;
         } else {
@@ -332,7 +334,17 @@ typedef enum : NSUInteger {
 {
     [self.progressView setHidden:YES];
     [_imgViewUploadORCancel setHidden:YES];
-    [[ChatAPIManager sharedManager] sendChatMessage:fileURL];
+    
+    //[[ChatAPIManager sharedManager] sendChatMessage:fileURL];
+    
+    //NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: messageId)
+    NSMutableDictionary *uploadedInfoDict = [[NSMutableDictionary alloc] init];
+    [uploadedInfoDict setObject:fileURL forKey:@"message"];
+    [uploadedInfoDict setObject:self.ticketId forKey:@"ticketId"];
+    [uploadedInfoDict setObject:self.ticketSubject forKey:@"subject"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"MediaUploaded" object:uploadedInfoDict];
+    
     self.mediauploadStatus = kMediaUploadStatusUploaded;
     
 }
@@ -343,5 +355,7 @@ typedef enum : NSUInteger {
     self.mediauploadStatus = kMediaUploadStatusFailed;
 
 }
+
+
 
 @end
