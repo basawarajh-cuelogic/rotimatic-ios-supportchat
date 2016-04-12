@@ -24,6 +24,9 @@ let ZDClientID      = "mobile_sdk_client_beec1c992b90e9228d61"
 let UserName = "Basawaraj Hiremath"
 let UserEmail = "basawaraj.hiremath@cuelogic.co.in"
 
+//let UserName = "Rishi Israni"
+//let UserEmail = "rishi@zimplistic.com"
+
 class RMSupportManager: NSObject {
 
     static var sharedInstance = RMSupportManager()

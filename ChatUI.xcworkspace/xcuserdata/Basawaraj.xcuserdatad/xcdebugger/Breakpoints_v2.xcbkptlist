@@ -260,11 +260,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "482073065.940316"
+            timestampString = "482135563.138063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
+            startingLineNumber = "339"
+            endingLineNumber = "339"
             landmarkName = "-uploadSuccess:"
             landmarkType = "5">
          </BreakpointContent>
@@ -276,11 +276,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "482073065.940316"
+            timestampString = "482135563.138063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "-uploadFailed"
             landmarkType = "5">
          </BreakpointContent>
@@ -292,11 +292,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "482073065.940316"
+            timestampString = "482135563.138063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-mediaView"
             landmarkType = "5">
          </BreakpointContent>
@@ -308,11 +308,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChatUI/Objective-C Classes/JSQMessagesViewController/JSQMessagesViewController/Model/JSQPhotoMediaItem.m"
-            timestampString = "482073065.940316"
+            timestampString = "482135563.138063"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "323"
-            endingLineNumber = "323"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "-progressUpload:totalBytesExpectedToSend:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1380,12 +1380,12 @@
                   moduleName = "ChatUI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-                  timestampString = "482080614.627881"
+                  timestampString = "482135564.246116"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "204"
                   endingLineNumber = "204"
-                  offsetFromSymbolStart = "1412">
+                  offsetFromSymbolStart = "1604">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -1395,12 +1395,12 @@
                   moduleName = "ChatUI"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/cuelogic/Work/Rotimatic-Support-Chat/ChatUI/CoreDataLayer/DataMangers/ChatInfoDataManager.swift"
-                  timestampString = "482080614.628166"
+                  timestampString = "482135564.246348"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "204"
                   endingLineNumber = "204"
-                  offsetFromSymbolStart = "2000">
+                  offsetFromSymbolStart = "2305">
                </Location>
             </Locations>
          </BreakpointContent>

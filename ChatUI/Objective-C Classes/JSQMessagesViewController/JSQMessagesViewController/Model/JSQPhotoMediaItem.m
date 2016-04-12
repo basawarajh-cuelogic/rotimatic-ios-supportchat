@@ -134,6 +134,10 @@ typedef enum : NSUInteger {
 
 - (UIView *)mediaView
 {
+    if (_cachedMediaView) {
+        return _cachedMediaView;
+    }
+    
     if (self.image == nil && self.imageURL == nil) {
         return nil;
     }
@@ -187,16 +191,18 @@ typedef enum : NSUInteger {
             self.progressView.tintColor = [UIColor orangeColor];
             self.progressView.backgroundColor = [UIColor clearColor];
             self.progressView.backgroundView = [UIView new];
+            [imageView addSubview:self.progressView];
+
             
             _imgViewUploadORCancel = [UIButton new];
             [_imgViewUploadORCancel setBounds:CGRectMake(0, 0, 32, 32)];
             [_imgViewUploadORCancel setBackgroundImage:[UIImage imageNamed:@"close_icon.png"] forState:UIControlStateNormal];
             [_imgViewUploadORCancel setBackgroundImage:[UIImage imageNamed:@"up_arrow_chat.png"] forState:UIControlStateSelected];
             [_imgViewUploadORCancel addTarget:self action:@selector(onTapOfProgress:) forControlEvents:UIControlEventTouchUpInside];
+            _imgViewUploadORCancel.center = imageView.center;
 
             
         } else if(_mediauploadStatus == kMediaUploadStatusWillStart) {
-            
             
             NSURL * filePath = [[[NSURL fileURLWithPath:NSTemporaryDirectory()] URLByAppendingPathComponent:@"upload"] URLByAppendingPathComponent:self.imageURL.lastPathComponent];
             UIImage *pic = [UIImage imageWithContentsOfFile:filePath.path];
@@ -335,6 +341,8 @@ typedef enum : NSUInteger {
     [self.progressView setHidden:YES];
     [_imgViewUploadORCancel setHidden:YES];
     
+    self.mediauploadStatus = kMediaUploadStatusUploaded;
+    
     //[[ChatAPIManager sharedManager] sendChatMessage:fileURL];
     
     //NSNotificationCenter.defaultCenter().postNotificationName("NotificationIdentifier", object: messageId)
@@ -345,7 +353,6 @@ typedef enum : NSUInteger {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"MediaUploaded" object:uploadedInfoDict];
     
-    self.mediauploadStatus = kMediaUploadStatusUploaded;
     
 }
 
